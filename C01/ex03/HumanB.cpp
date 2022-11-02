@@ -1,7 +1,7 @@
 #include "HumanB.hpp"
 
 //constructor and destructor
-HumanB::HumanB (std::string _name) : weaponB("") , name(_name) {
+HumanB::HumanB (std::string _name) : name(_name) {
 
 	std::cout << "B constructor called" << std::endl;
 	return;
@@ -10,20 +10,21 @@ HumanB::HumanB (std::string _name) : weaponB("") , name(_name) {
 //destructor
 HumanB::~HumanB () {
 
+	std::cout << "B destructor called" << std::endl;
 	return;
 }
 
 //setter
-void	setWeapon (Weapon _weaponB) {
+void	HumanB::setWeapon (Weapon &_weaponB) {
 
-	this->weaponB = _weaponB;
+	this->weaponB = &_weaponB;
 	return;
 }
 
 //metodo
-void	attack() const {
+void	HumanB::attack() {
 	
-	std::cout << this->name << " attacks with his " << this->weaponB << std::endl;
+	std::cout << this->name << " attacks with his " << this->weaponB->getType() << std::endl;
 
 	return;
 }
