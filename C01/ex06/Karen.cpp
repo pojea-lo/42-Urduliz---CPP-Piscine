@@ -51,17 +51,32 @@ void	Karen::complain(std::string level) {
 	switch (i) {
 		case 0:
 			ptrFun = &Karen::debug;
+			(this->*ptrFun)();
+			ptrFun = &Karen::info;
+			(this->*ptrFun)();
+			ptrFun = &Karen::warning;
+			(this->*ptrFun)();
+			ptrFun = &Karen::error;
+			(this->*ptrFun)();
 			break;
 		case 1:
 			ptrFun = &Karen::info;
+			(this->*ptrFun)();
+			ptrFun = &Karen::warning;
+			(this->*ptrFun)();
+			ptrFun = &Karen::error;
+			(this->*ptrFun)();
 			break;
 		case 2:
 			ptrFun = &Karen::warning;
+			(this->*ptrFun)();
+			ptrFun = &Karen::error;
+			(this->*ptrFun)();
 			break;
 		case 3:
 			ptrFun = &Karen::error;
+			(this->*ptrFun)();
 			break;
 	}
-	(this->*ptrFun)();
 	return;
 }

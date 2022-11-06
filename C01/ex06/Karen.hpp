@@ -16,8 +16,6 @@ class Karen {
 		~Karen(void);
 
 		void	complain(std::string level);
-
-
 };
 
 #endif
