@@ -42,26 +42,11 @@ void	Karen::error() {
 void	Karen::complain(std::string level) {
 
 	std::string		list[4] = {"debug", "info", "warning", "error"};
+	void			(Karen::*ptrFun[4])(void) = {&Karen::debug, &Karen::info, &Karen::warning, &Karen::error};
 	int				i = 0;
-	void			(Karen::*ptrFun)(void) = NULL;
 	
 	while (level.compare(list[i]) != 0 && i < 4)
 		i++;
-	
-	switch (i) {
-		case 0:
-			ptrFun = &Karen::debug;
-			break;
-		case 1:
-			ptrFun = &Karen::info;
-			break;
-		case 2:
-			ptrFun = &Karen::warning;
-			break;
-		case 3:
-			ptrFun = &Karen::error;
-			break;
-	}
-	(this->*ptrFun)();
+	(this->*ptrFun[i])();
 	return;
 }
