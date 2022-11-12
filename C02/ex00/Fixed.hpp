@@ -11,7 +11,6 @@ class Fixed {
 
 	public:
 		Fixed ();
-//		Fixed (int n);
 		~Fixed ();
 		Fixed (const Fixed& obj);
 		Fixed& operator= (Fixed& obj);
@@ -19,9 +18,6 @@ class Fixed {
 		int		getRawBits() const;
 		void	setRawBits(int const raw);
 
-		
-
 };
-
 
 #endif
