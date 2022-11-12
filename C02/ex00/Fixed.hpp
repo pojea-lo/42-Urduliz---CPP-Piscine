@@ -11,10 +11,10 @@ class Fixed {
 
 	public:
 		Fixed ();
-		Fixed (int n);
+//		Fixed (int n);
 		~Fixed ();
 		Fixed (const Fixed& obj);
-		Fixed operator= (Fixed& obj1);
+		Fixed& operator= (Fixed& obj);
 
 		int		getRawBits() const;
 		void	setRawBits(int const raw);
