@@ -41,21 +41,27 @@ Fixed::Fixed (const Fixed& obj) {
 //getters & setters
 int	Fixed::getRawBits() const {
 
-	std::cout << "getRawBits member function called" << std::endl;
+//	std::cout << "getRawBits member function called" << std::endl;
 	return this->res;
 }
 
-void Fixed::setRawBits(int const raw) {
+void Fixed::setRawBits(const int raw) {
 
-	std::cout << "setRawBits member function called" << std::endl;
+//	std::cout << "setRawBits member function called" << std::endl;
 	this->res = raw;
 	return;
 }
 
 //operator overload
-Fixed& Fixed::operator= (Fixed& obj) {
+Fixed &Fixed::operator= (Fixed const &obj) {
 
 	std::cout << "Assignation operator called" << std::endl;
-	this->res = obj.getRawBits(); 
-	return obj;
+	this->res = obj.getRawBits();
+	return (*this);
+}
+
+void	&Fixed::operator<< (Fixed const &obj) {
+
+	std::cout << (float)obj.getRawBits() << std::endl;
+	return;
 }
