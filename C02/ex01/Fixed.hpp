@@ -8,7 +8,7 @@ class Fixed {
 
 	private:
 		int					res;
-		const static int	rawBits;
+		const static int	rawBits = 8;
 
 	public:
 		Fixed ();
@@ -16,17 +16,17 @@ class Fixed {
 		Fixed (const float flt);
 		~Fixed ();
 		Fixed (const Fixed& obj);
-		Fixed &operator= (Fixed const &obj);
-		void &operator<< (Fixed const &obj);
+		Fixed &operator= (const Fixed &obj);
 
 		int		getRawBits() const;
 		void	setRawBits(const int raw);
 		int		toInt() const;
-		float	foFloat() const;
+		float	toFloat() const;
 
 		
 
 };
 
+		std::ostream& operator<<(std::ostream& os, Fixed const &obj);
 
 #endif

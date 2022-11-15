@@ -1,27 +1,24 @@
 #include "Fixed.hpp"
 
-//const static res
-int const Fixed::rawBits = 8;
-
 //constructor, destructor & copy constructor
 Fixed::Fixed () {
 	
 	std::cout << "Default constructor called" << std::endl;
-	res = 0;
+	this->res = 0;
 	return;
 }
 
 Fixed::Fixed (const int ent) {
 
 	std::cout << "Int constructor called" << std::endl;
-	res = ent;
+	this->res = ent << this->rawBits;
 	return;
 }
 
 Fixed::Fixed (const float flt) {
 
 	std::cout << "Float constructor called" << std::endl;
-	res = (int)flt;
+	this->res = roundf (flt * (1 << this->rawBits));
 	return;
 }
 
@@ -42,7 +39,7 @@ Fixed::Fixed (const Fixed& obj) {
 int	Fixed::getRawBits() const {
 
 //	std::cout << "getRawBits member function called" << std::endl;
-	return this->res;
+	return (this->res);
 }
 
 void Fixed::setRawBits(const int raw) {
@@ -53,15 +50,29 @@ void Fixed::setRawBits(const int raw) {
 }
 
 //operator overload
-Fixed &Fixed::operator= (Fixed const &obj) {
+Fixed	&Fixed::operator= (const Fixed &obj) {
 
 	std::cout << "Assignation operator called" << std::endl;
 	this->res = obj.getRawBits();
 	return (*this);
 }
 
-void	&Fixed::operator<< (Fixed const &obj) {
+//is not a class member
+std::ostream&	operator<<(std::ostream& os, Fixed const &obj) {
 
-	std::cout << (float)obj.getRawBits() << std::endl;
-	return;
+	os << obj.toFloat();
+	return (os);
+}
+
+//member functions
+int		Fixed::toInt() const {
+
+	int dres = this->res / (1 << this->rawBits);
+	return dres;
+}
+
+float	Fixed::toFloat() const {
+
+	float fres = roundf(this->res) / (1 << this->rawBits);
+	return fres;
 }
