@@ -39,9 +39,9 @@ void Fixed::setRawBits(int const raw) {
 }
 
 //operator overload
-Fixed& Fixed::operator= (Fixed& obj) {
+Fixed &Fixed::operator=(Fixed const &obj) {
 
 	std::cout << "Assignation operator called" << std::endl;
 	this->res = obj.getRawBits(); 
-	return obj;
+	return (*this);
 }
