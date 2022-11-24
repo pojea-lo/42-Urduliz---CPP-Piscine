@@ -6,6 +6,7 @@ DiamondTrap::DiamondTrap () {
 	std::cout << "Empty DiamondTrap constructor was called" << std::endl;
 	Name = "";
 	ClapTrap::setName("Lilo");
+//	ClapTrap::setName(ClapTrap::getName());
 	setHitpoints(FlagTrap::getHitpoints());
 	setEnergyPoints (ScravTrap::getEnergyPoints());
 	setAttackDamage (FlagTrap::getAttackDamage());
@@ -17,6 +18,7 @@ DiamondTrap::DiamondTrap (std::string _Name) {
 	std::cout << "Parameter DiamondTrap constructor was called" << std::endl;
 	Name = _Name;
 	ClapTrap::setName("Lilo");
+//	ClapTrap::setName(ClapTrap::getName());
 	setHitpoints(FlagTrap::getHitpoints());
 	setEnergyPoints(ScravTrap::getEnergyPoints());
 	setAttackDamage(FlagTrap::getAttackDamage());
@@ -26,7 +28,6 @@ DiamondTrap::DiamondTrap (std::string _Name) {
 DiamondTrap::DiamondTrap (const DiamondTrap &obj): ClapTrap(obj) {
 
 	std::cout << "Copy DiamondTrap constructor was called" << std::endl;
-	
 	return;
 }
 
@@ -43,5 +44,17 @@ void	DiamondTrap::printClap() {
 	std::cout << getHitpoints() << " points of life\n";
 	std::cout << getEnergyPoints() << " points of reserved life\n";
 	std::cout << getAttackDamage() << " points of firepower\n" << std::endl;
+	return;
+}
+
+void	DiamondTrap::attack(std::string const &target) {
+
+	ScravTrap::attack(target);
+	return;
+}
+
+void	DiamondTrap::whoAmI () {
+
+	std::cout << "Hi, I am " << Name << " and my ClapTrap name is " << ClapTrap::getName() << std::endl;
 	return;
 }

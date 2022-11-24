@@ -19,14 +19,14 @@ class ClapTrap {
 
 		ClapTrap &operator= (const ClapTrap &obj);
 
-		virtual std::string     getName() const;
-		virtual void            setName(std::string str);
-		virtual unsigned int    getHitpoints() const;
-		virtual void            setHitpoints(unsigned int num);
-		virtual unsigned int    getEnergyPoints() const;
-		virtual void            setEnergyPoints(unsigned int num);
-		virtual unsigned int    getAttackDamage() const;
-		virtual void            setAttackDamage(unsigned int num);
+		std::string     getName() const;
+		void            setName(std::string str);
+		unsigned int    getHitpoints() const;
+		void            setHitpoints(unsigned int num);
+		unsigned int    getEnergyPoints() const;
+		void            setEnergyPoints(unsigned int num);
+		unsigned int    getAttackDamage() const;
+		void            setAttackDamage(unsigned int num);
 		
 
 		void    attack (std::string const &target);
