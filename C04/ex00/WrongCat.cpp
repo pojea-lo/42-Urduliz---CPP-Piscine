@@ -31,10 +31,10 @@ void	WrongCat::setType(std::string _type) {
 	type = _type;
 	return;
 }
-
+/*
 //methods
 void	WrongCat::makeSound() const {
 
 	Animal::makeSound();
 	return;
-}
+}*/

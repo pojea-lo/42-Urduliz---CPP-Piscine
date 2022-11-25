@@ -34,6 +34,12 @@ FlagTrap::~FlagTrap() {
 }
 
 //member functions
+void    FlagTrap::attack (std::string const &target) {
+
+	std::cout << "FlagTrap " << getName() << " attacks " << target << ", causing " << getAttackDamage() << " points of damage!" << std::endl;
+	return;
+}
+
 void	FlagTrap::highFiveGuys() {
 
 	std::cout << "Hi " << getName() << ", let's high five!!" << std::endl;

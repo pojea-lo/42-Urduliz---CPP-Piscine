@@ -11,6 +11,7 @@ class FlagTrap: public ClapTrap {
 		~FlagTrap();
 		FlagTrap(const FlagTrap &obj);
 
+		void    attack (std::string const &target);
 		void	highFiveGuys();
 
 };

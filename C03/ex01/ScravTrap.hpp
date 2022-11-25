@@ -11,6 +11,7 @@ class ScravTrap : public ClapTrap {
 		~ScravTrap();
 		ScravTrap (const ScravTrap &obj);
 
+		void    attack (std::string const &target);
 		void	guardGate();
 
 };

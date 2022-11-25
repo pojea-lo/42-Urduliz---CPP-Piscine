@@ -15,7 +15,8 @@ int main() {
 
 	me.printClap();
 	you.printClap();
-	me.guardGate();
+
+	me.attack(you.getName());
 	you.guardGate();
 
 	

@@ -26,6 +26,12 @@ ScravTrap::~ScravTrap() {
 }
 
 //member functions
+void    ScravTrap::attack (std::string const &target) {
+
+	std::cout << "ScravTrap " << getName() << " attacks " << target << ", causing " << getAttackDamage() << " points of damage!" << std::endl;
+	return;
+}
+
 void	ScravTrap::guardGate() {
 
 	std::cout << getName() << " has enterred in Gate keeper mode." << std::endl;

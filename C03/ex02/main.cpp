@@ -22,6 +22,7 @@ int main() {
 	std::cout << "\nFlagtrap objects: " << std::endl;
 	me.printClap();
 	you.printClap();
+	me.attack(you.getName());
 	me.highFiveGuys();
 	you = me;
 	you.printClap();

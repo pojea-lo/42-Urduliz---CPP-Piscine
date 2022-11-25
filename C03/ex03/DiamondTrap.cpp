@@ -5,8 +5,7 @@ DiamondTrap::DiamondTrap () {
 
 	std::cout << "Empty DiamondTrap constructor was called" << std::endl;
 	Name = "";
-	ClapTrap::setName("Lilo");
-//	ClapTrap::setName(ClapTrap::getName());
+	ClapTrap::setName("_clap_name");
 	setHitpoints(FlagTrap::getHitpoints());
 	setEnergyPoints (ScravTrap::getEnergyPoints());
 	setAttackDamage (FlagTrap::getAttackDamage());
@@ -17,8 +16,7 @@ DiamondTrap::DiamondTrap (std::string _Name) {
 
 	std::cout << "Parameter DiamondTrap constructor was called" << std::endl;
 	Name = _Name;
-	ClapTrap::setName("Lilo");
-//	ClapTrap::setName(ClapTrap::getName());
+	ClapTrap::setName(Name + "_clap_name");
 	setHitpoints(FlagTrap::getHitpoints());
 	setEnergyPoints(ScravTrap::getEnergyPoints());
 	setAttackDamage(FlagTrap::getAttackDamage());
