@@ -39,10 +39,10 @@ void	Animal::setType(std::string _type) {
 }
 
 //overload operators
-Animal	&Animal::operator= (const Animal &obj) {
-	
-	Animal	*neu = new Animal(obj.getType());
-	return (*neu);
+Animal	*Animal::operator= (Animal const *obj) {
+
+	Animal	*neu = new Animal(obj->getType());
+	return (neu);
 }
 
 //methods

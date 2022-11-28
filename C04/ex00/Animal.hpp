@@ -17,7 +17,7 @@ class Animal {
 		virtual std::string	getType () const;
 		virtual void		setType (std::string _type);
 
-		Animal		&operator= (const Animal &obj);
+		Animal		*operator= (const Animal *obj);
 
 		virtual void		makeSound() const;
 
