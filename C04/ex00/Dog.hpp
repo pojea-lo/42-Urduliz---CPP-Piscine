@@ -5,16 +5,13 @@
 
 class Dog: public Animal {
 	
-	private:
-		std::string	type;
-
 	public:
 		Dog ();
 		Dog (const Dog &obj);
 		~Dog ();
 
-		std::string	getType () const;
-		void		setType (std::string _type);
+		Dog			&operator= (const Dog &obj);
+
 		void		makeSound() const;
 	
 };

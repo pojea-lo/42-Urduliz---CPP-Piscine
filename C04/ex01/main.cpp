@@ -4,48 +4,41 @@
 
 int	main() {
 
-/*	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	const WrongAnimal* h = new WrongAnimal();
-	const WrongAnimal* g = new WrongCat();
+	int	nstr = 6;
 
-//with virtual and good results	
-	std::cout << std::endl;
-	std::cout << meta->getType() << " " << std::endl;
-	meta->makeSound();
-	std::cout << j->getType() << " " << std::endl;
-	j->makeSound(); //will output the dog sound!
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	std::cout << std::endl;
+	Animal *str[nstr];
 
-//without virtual and bad results	
-	std::cout << h->getType() << " " << std::endl;
-	h->makeSound();
-	std::cout << g->getType() << " " << std::endl;
-	g->makeSound(); //will output the Animal sound!
-	std::cout << std::endl;
+	for (int i = 0; i < nstr; i++) {
+		if (i % 2 == 0)
+			str[i] = new Cat();
+		else
+			str[i] = new Dog();
+	}
 
-	delete g;
-	delete h;
-	delete i;
-	delete j;
-	delete meta;
+	for (int i = 0; i < nstr; i++) 
+		str[i]->makeSound();
+
+	for (int i = 0; i < nstr; i++) 
+		delete str[i];
+/*
+	Cat prueba1;
+	Cat prueba2 (prueba1);
+
+	std::cout << &prueba1 << std::endl;
+	std::cout << &prueba2 << std::endl;
+	prueba1.printCat();
+	prueba2.printCat();
+
+	Animal 	aprueba1;
+	Animal	aprueba2 (aprueba1);
+	Animal	aprueba3 = aprueba1;
+
+	std::cout << &aprueba1 << std::endl;
+	std::cout << &aprueba2 << std::endl;
+	std::cout << &aprueba3 << std::endl;
+	aprueba1.printAnimal();
+	aprueba2.printAnimal();
+	aprueba3.printAnimal();
 */
-	
-//	Brain	id;
-//	id.printBrains ();
-
-	Animal		str[10];
-
-
-
-
-
-
-
-
-
 	return 0;
 }

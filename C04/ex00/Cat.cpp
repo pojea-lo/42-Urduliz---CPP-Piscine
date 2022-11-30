@@ -1,16 +1,17 @@
 #include "Cat.hpp"
 
+//constructor & destructor
 Cat::Cat() {
 
-	setType("Cat");
 	std::cout << "Empty Cat constructor was called" << std::endl;
+	setType("Cat");
 	return;
 }
 
 Cat::Cat (const Cat &obj) {
 
-	setType(obj.type);
 	std::cout << "Copy Cat constructor was called" << std::endl;
+	setType(obj.type);
 	return;
 }
 
@@ -20,16 +21,11 @@ Cat::~Cat () {
 	return;
 }
 
-//getters & setters
-std::string	Cat::getType() const{
+//overload operators
+Cat		&Cat::operator= (const Cat &obj) {
 
-	return (type);
-}
-
-void	Cat::setType(std::string _type) {
-
-	type = _type;
-	return;
+	type = obj.type;
+	return *this;
 }
 
 //methods

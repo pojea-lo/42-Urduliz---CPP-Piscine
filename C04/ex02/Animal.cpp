@@ -13,9 +13,9 @@ Animal::Animal (std::string _type): type(_type) {
 	return;
 }
 
+Animal::Animal (const Animal &obj) {
 
-Animal::Animal (const Animal &obj): type(obj.type) {
-
+	*this = obj;
 	std::cout << "Copy Animal constructor was called" << std::endl;
 	return;
 }

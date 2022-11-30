@@ -1,5 +1,6 @@
 #include "WrongCat.hpp"
 
+//constructor & destructor
 WrongCat::WrongCat() {
 
 	setType("WrongCat");
@@ -18,6 +19,13 @@ WrongCat::~WrongCat () {
 
 	std::cout << "WrongCat destructor constructor was called" << std::endl;
 	return;
+}
+
+//overload operators
+WrongCat		&WrongCat::operator= (const WrongCat &obj) {
+
+	type = obj.type;
+	return *this;
 }
 
 //getters & setters

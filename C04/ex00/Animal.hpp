@@ -5,7 +5,7 @@
 
 class Animal {
 
-	private:
+	protected:
 		std::string	type;
 
 	public:
@@ -14,8 +14,8 @@ class Animal {
 		Animal (const Animal &obj);
 		virtual ~Animal ();
 
-		virtual std::string	getType () const;
-		virtual void		setType (std::string _type);
+		std::string	getType () const;
+		void		setType (std::string _type);
 
 		Animal		*operator= (const Animal *obj);
 

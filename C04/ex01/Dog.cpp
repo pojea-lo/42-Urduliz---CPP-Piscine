@@ -23,6 +23,13 @@ Dog::~Dog () {
 	return;
 }
 
+//overload operators
+Dog		&Dog::operator= (const Dog &obj) {
+
+	type = obj.type;
+	return *this;
+}
+
 //getters & setters
 std::string	Dog::getType() const{
 

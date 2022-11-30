@@ -5,21 +5,22 @@
 
 class Animal {
 
-	private:
+	protected:
 		std::string	type;
 
 	public:
-//		Animal ();
-//		Animal (std::string _type);
-//		Animal (const Animal &obj);
-//		virtual ~Animal ();
+		Animal ();
+		Animal (std::string _type);
+		Animal (const Animal &obj);
+		virtual ~Animal ();
 
 		virtual std::string	getType () const;
 		virtual void		setType (std::string _type);
 
-//		Animal		&operator= (const Animal &obj);
+		Animal		&operator= (const Animal &obj);
 
 		virtual void		makeSound() const;
+		void				printAnimal() const;
 
 };
 

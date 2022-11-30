@@ -1,5 +1,6 @@
 #include "Dog.hpp"
 
+//constructor and destructor
 Dog::Dog() {
 
 	setType("Dog");
@@ -20,17 +21,13 @@ Dog::~Dog () {
 	return;
 }
 
-//getters & setters
-std::string	Dog::getType() const{
+//overload operators
+Dog		&Dog::operator= (const Dog &obj) {
 
-	return (type);
+	type = obj.type;
+	return *this;
 }
 
-void	Dog::setType(std::string _type) {
-
-	type = _type;
-	return;
-}
 
 //methods
 void	Dog::makeSound() const {

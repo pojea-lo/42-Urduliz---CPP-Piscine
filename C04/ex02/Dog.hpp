@@ -7,13 +7,14 @@
 class Dog: public Animal {
 	
 	private:
-		std::string	type;
 		Brain	*cer;
 
 	public:
 		Dog ();
 		Dog (const Dog &obj);
 		~Dog ();
+
+		Dog			&operator= (const Dog &obj);
 
 		std::string	getType () const;
 		void		setType (std::string _type);

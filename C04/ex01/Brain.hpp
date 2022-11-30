@@ -20,6 +20,7 @@ class	Brain {
 		void				setIdeas(std::string _ideas[100]);
 
 		void	printBrains () const;
+		void	printPtrBrain () const;
 
 };
 

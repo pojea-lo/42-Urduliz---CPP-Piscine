@@ -61,3 +61,9 @@ void	Brain::printBrains () const {
 
 	return;
 }
+
+void	Brain::printPtrBrain () const {
+
+	std::cout << &ideas[0] << std::endl;
+	return;
+}
