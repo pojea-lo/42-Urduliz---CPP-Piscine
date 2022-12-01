@@ -7,7 +7,7 @@ AMateria::AMateria (): type("") {
 	return;
 }
 
-AMateria::Amateria (std::string const &_type): type(_type) {
+AMateria::AMateria (std::string const &_type): type(_type) {
 
 	std::cout << "Parameter AMateria constructor was called" << std::endl;
 	return;
@@ -16,16 +16,22 @@ AMateria::Amateria (std::string const &_type): type(_type) {
 AMateria::AMateria (const AMateria &obj) {
 
 	std::cout << "Copy AMateria constructor was called" << std::endl;
-	type = obj.type;
+	type = obj.getType();
 	return;
 }
 
+AMateria::~AMateria () {
+	std::cout << "AMateria destructor was called" << std::endl;
+	return;
+}
+
+
 //overload operators
-AMateria &AMateria::operator= (const AMateris &obj) {
+AMateria &AMateria::operator= (const AMateria &obj) {
 
 	std::cout << "Overload = AMateria was called" << std::endl;
-	neu = new AMateria(obj.type);
-	return neu;
+	type = obj.getType();
+	return *this;
 }
 
 //getters and setters
@@ -39,16 +45,10 @@ void	AMateria::setType (std::string _type) {
 	type = _type;
 	return;
 }
-
+/*
 //methods
-AMateria	*AMateria::clone() const {
-	
-	AMateria *neu = new AMateria ();
-	return neu;
-}
-
 void	AMateria::use(ICharacter &target) {
 
 
 	return;
-}
+}*/

@@ -1,5 +1,5 @@
-#ifndef "AMATERIA_HPP"
-# define "AMATERIA_HPP"
+#ifndef AMATERIA_HPP
+# define AMATERIA_HPP
 
 #include <iostream>
 
@@ -12,15 +12,15 @@ class AMateria {
 		AMateria ();
 		AMateria (std::string const &type);
 		AMateria (const AMateria &obj);
-		~AMateria ();
+		virtual ~AMateria ();
 
-		std::string		const &getType() const;
-		void			setType(std::string _type);
+		std::string			const &getType() const;
+		void				setType(std::string _type);
 
-		&operator= (const AMateria &obj);
+		AMateria 			&operator= (const AMateria &obj);
 		
 		virtual AMateria	*clone() const = 0;
-		virtual void		use(ICharacter &target);
+//		virtual void		use(ICharacter &target);
 
 };
 
