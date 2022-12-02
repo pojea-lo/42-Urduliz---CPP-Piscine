@@ -32,11 +32,12 @@ Ice::~Ice() {
 Ice		*Ice::clone () const {
 
 	Ice *neu = new Ice(*this);
+//	Ice *neu = new Ice();
 	return neu;
 }
-/*
+
 void	Ice::use(ICharacter &target) {
 
-	std::cout << " shoots an ice bolt at " << target << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 	return;
-}*/
+}

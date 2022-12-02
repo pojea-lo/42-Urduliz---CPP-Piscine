@@ -1,7 +1,10 @@
 #ifndef AMATERIA_HPP
 # define AMATERIA_HPP
 
+#include "ICharacter.hpp"
 #include <iostream>
+
+class ICharacter;
 
 class AMateria {
 
@@ -20,7 +23,7 @@ class AMateria {
 		AMateria 			&operator= (const AMateria &obj);
 		
 		virtual AMateria	*clone() const = 0;
-//		virtual void		use(ICharacter &target);
+		virtual void		use(ICharacter &target);
 
 };
 

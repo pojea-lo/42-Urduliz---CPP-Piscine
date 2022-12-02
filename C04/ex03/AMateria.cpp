@@ -45,10 +45,10 @@ void	AMateria::setType (std::string _type) {
 	type = _type;
 	return;
 }
-/*
+
 //methods
 void	AMateria::use(ICharacter &target) {
 
-
+	std::cout << "* I don't know what I have to do with " << target.getName() << std::endl;
 	return;
-}*/
+}
