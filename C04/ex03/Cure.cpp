@@ -28,6 +28,13 @@ Cure::~Cure() {
 	return;
 }
 
+//overload operator
+Cure		&Cure::operator= (const Cure &obj) {
+
+	type = obj.type;
+	return *this;
+}
+
 //methods
 Cure		*Cure::clone () const {
 

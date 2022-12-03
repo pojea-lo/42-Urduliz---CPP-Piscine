@@ -71,11 +71,6 @@ void	Character::setName(std::string const &_Name) {
 	return;
 }
 
-AMateria	&Character::getPotions(int idx) {
-
-	return *potions[idx];
-}
-
 //methods
 void	Character::equip(AMateria *m) {
 
@@ -89,7 +84,7 @@ void	Character::equip(AMateria *m) {
 		i++;
 	}
 	if (i == 4)
-		std::cout << "Sorry, but your potions are completed" << std::endl;
+		std::cout << "Sorry, but your potions are already complete" << std::endl;
 	return;
 }
 
@@ -97,6 +92,7 @@ void	Character::unequip (int idx) {
 
 	if (idx >= 0 && idx < 4) {
 		if (potions[idx] != NULL) {
+//			delete potions[idx];//si no pongo esto aquí me deja un leak de memoria, pero el subject pone de NO borrar
 			potions[idx] = NULL;
 			std::cout << "The id " << idx << " was unequiped of your potions!!" << std::endl;
 		}
@@ -111,7 +107,6 @@ void	Character::unequip (int idx) {
 void	Character::use (int idx, ICharacter &target) {
 
 	if (potions[idx] != NULL) {
-		delete potions[idx];
 		potions[idx]->use(target);
 	}
 	else

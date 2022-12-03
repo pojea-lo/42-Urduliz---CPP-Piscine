@@ -5,6 +5,7 @@ SRC = main.cpp\
 	  Ice.cpp\
 	  Cure.cpp\
 	  Character.cpp\
+	  MateriaSource.cpp\
 	  
 OBJS = $(SRC: .cpp=.o)
 

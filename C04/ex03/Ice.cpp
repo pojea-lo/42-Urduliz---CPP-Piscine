@@ -28,9 +28,17 @@ Ice::~Ice() {
 	return;
 }
 
+//overload operators
+Ice		&Ice::operator= (const Ice &obj) {
+
+	type = obj.type;
+	return *this;
+}
+
 //methods
 Ice		*Ice::clone () const {
 
+	std::cout << "Ice cloned was called" << std::endl;
 	Ice *neu = new Ice(*this);
 //	Ice *neu = new Ice();
 	return neu;

@@ -17,7 +17,6 @@ class Character: public ICharacter {
 
 		Character		&operator= (const Character &obj);
 		void			setName(std::string const &_Name);
-		AMateria		&getPotions(int idx);
 
 		std::string 	const &getName() const;
 		void 			equip(AMateria* m);
