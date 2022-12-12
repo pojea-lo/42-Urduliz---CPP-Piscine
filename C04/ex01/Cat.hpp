@@ -18,8 +18,11 @@ class Cat: public Animal {
 
 		std::string	getType () const;
 		void		setType (std::string _type);
+		Brain		getIdeas () const;
+		void		setIdeas (std::string *_ideas);
 		void		makeSound() const;
 		void		printCat() const;
+		void		printMemoryCat() const;
 	
 };
 

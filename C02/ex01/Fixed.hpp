@@ -20,10 +20,9 @@ class Fixed {
 
 		int		getRawBits() const;
 		void	setRawBits(const int raw);
+
 		int		toInt() const;
 		float	toFloat() const;
-
-		
 
 };
 

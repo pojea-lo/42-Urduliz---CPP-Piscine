@@ -13,6 +13,7 @@ Dog::Dog (const Dog &obj) {
 	std::cout << "Copy Dog constructor was called" << std::endl;
 	setType(obj.type);
 	cer = new Brain();
+	*cer = *obj.cer;
 	return;
 }
 
@@ -27,6 +28,8 @@ Dog::~Dog () {
 Dog		&Dog::operator= (const Dog &obj) {
 
 	type = obj.type;
+	cer = new Brain();
+	*cer = *obj.cer;
 	return *this;
 }
 

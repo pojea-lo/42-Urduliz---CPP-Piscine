@@ -24,8 +24,6 @@ int main() {
 	you.printClap();
 	me.attack(you.getName());
 	me.highFiveGuys();
-	you = me;
-	you.printClap();
 	std::cout << "\nScravtrap objects: " << std::endl;
 	he.printClap();
 	he.guardGate();

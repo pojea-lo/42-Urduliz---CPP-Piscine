@@ -37,7 +37,7 @@ const std::string	*Brain::getIdeas() const {
 	return (this->ideas);
 }
 
-void	Brain::setIdeas(std::string _ideas[100]) {
+void	Brain::setIdeas(std::string *_ideas) {
 
 	for (int i = 0; i < 100; i++)
 		ideas[i] = _ideas[i];
@@ -56,7 +56,8 @@ Brain	&Brain::operator= (const Brain &obj) {
 //methodes
 void	Brain::printBrains () const {
 
-	for (int i = 0; i < 100; i++)
+//	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 5; i++)
 		std::cout << this->ideas[i] << std::endl;
 
 	return;

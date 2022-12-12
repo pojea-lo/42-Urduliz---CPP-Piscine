@@ -39,10 +39,10 @@ void	WrongAnimal::setType(std::string _type) {
 }
 
 //overload operators
-WrongAnimal	&WrongAnimal::operator= (const WrongAnimal &obj) {
+WrongAnimal	*WrongAnimal::operator= (const WrongAnimal *obj) {
 	
-	WrongAnimal	*neu = new WrongAnimal(obj.getType());
-	return (*neu);
+	WrongAnimal	*neu = new WrongAnimal(obj->getType());
+	return neu;
 }
 
 //methods

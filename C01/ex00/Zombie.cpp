@@ -41,7 +41,7 @@ void	Zombie::setName(std::string name) {
 //function member
 void	Zombie::announce(void) const {
 
-	std::cout << this->_name << " is here" << std::endl;
+	std::cout << this->_name << " BrainnnnnzzzzzzzZ!!!" << std::endl;
 
 	return;
 }

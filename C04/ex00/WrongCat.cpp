@@ -3,15 +3,15 @@
 //constructor & destructor
 WrongCat::WrongCat() {
 
-	setType("WrongCat");
 	std::cout << "Empty WrongCat constructor was called" << std::endl;
+	setType("WrongCat");
 	return;
 }
 
 WrongCat::WrongCat (const WrongCat &obj) {
 
-	setType(obj.type);
 	std::cout << "Copy WrongCat constructor was called" << std::endl;
+	setType(obj.type);
 	return;
 }
 
@@ -39,10 +39,10 @@ void	WrongCat::setType(std::string _type) {
 	type = _type;
 	return;
 }
-/*
+
 //methods
 void	WrongCat::makeSound() const {
 
-	Animal::makeSound();
+	std::cout << "This class type " << getType() << " makes wrongmiau wrongmiau!!!" << std::endl;
 	return;
-}*/
+}

@@ -21,24 +21,32 @@ int	main() {
 	for (int i = 0; i < nstr; i++) 
 		delete str[i];
 /*
-	Cat prueba1;
-	Cat prueba2 (prueba1);
+//prueba de deep copy - 
 
-	std::cout << &prueba1 << std::endl;
-	std::cout << &prueba2 << std::endl;
+	Cat 			prueba1;
+	std::cout << "\nAt first, prueba1 is: " << std::endl;
 	prueba1.printCat();
+
+	std::string		new_idea[100];
+	for (int i = 0; i < 100; i++)
+		new_idea[i] = "Lolo " + std::to_string(i);
+	prueba1.setIdeas(new_idea);
+	std::cout << "\nAnd after the change, prueba1 is: " << std::endl;
+	prueba1.printCat();
+
+//opcion con el constructor copia
+//	Cat 			prueba2 (prueba1);
+//opcion con el operador igual
+	Cat 			prueba2;
+	prueba2 = prueba1;
+
+	std::cout << "\nAnd now, prueba2 is: " << std::endl;
 	prueba2.printCat();
 
-	Animal 	aprueba1;
-	Animal	aprueba2 (aprueba1);
-	Animal	aprueba3 = aprueba1;
-
-	std::cout << &aprueba1 << std::endl;
-	std::cout << &aprueba2 << std::endl;
-	std::cout << &aprueba3 << std::endl;
-	aprueba1.printAnimal();
-	aprueba2.printAnimal();
-	aprueba3.printAnimal();
-*/
+	std::cout << "\nMemory direction of prueba1: " << &prueba1 << std::endl;
+	std::cout << "Memory direction of prueba2: " << &prueba2 << std::endl;
+	prueba1.printMemoryCat();
+	prueba2.printMemoryCat();
+*/	
 	return 0;
 }

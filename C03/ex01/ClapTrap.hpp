@@ -5,7 +5,7 @@
 
 class ClapTrap {
 
-	private:
+	protected:
 		std::string			Name;
 		unsigned int        Hitpoints;//puntos de vida del personaje
 		unsigned int        EnergyPoints;//puntos reserva de vida

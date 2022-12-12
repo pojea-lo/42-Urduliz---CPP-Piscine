@@ -13,13 +13,13 @@ bool	bsp(Point const A, Point const B, Point const C, Point const P) {
 
 //rectangle triangle
 	if (D.getX() == 0)
-		D.setX(0.002f);
+		D.setX(0.02f);
 	if (D.getY() == 0)
-		D.setY(0.002f);
+		D.setY(0.02f);
 	if (E.getX() == 0)
-		E.setX(0.002f);
+		E.setX(0.02f);
 	if (E.getY() == 0)
-		E.setY(0.002f);
+		E.setY(0.02f);
 
 	W1 = (E.getX() * (A.getY() - P.getY()) + E.getY() * (P.getX() - A.getX())) / ((D.getX() * E.getY()) - (D.getY() * E.getX()));
 	W2 = (P.getY() - A.getY() - (W1 * D.getY())) / E.getY();

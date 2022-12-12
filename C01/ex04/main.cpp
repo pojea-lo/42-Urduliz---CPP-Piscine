@@ -12,12 +12,15 @@ std::string	ft_replace(std::string buffer, std::string s1, std::string s2) {
 
 	while (pos < buffer.length()) {
 
+		std::cout << "pos: " << pos << " y length: " << buffer.length() << std::endl;
 		bufferup = buffer;
 		buffer.erase (0, pos + ls1);
 		bufferup.erase (pos, lbuffer - pos);
 		newstr.append(bufferup);
 		newstr.append(s2);
 		pos = buffer.find(s1);
+		if (pos > buffer.length())
+			newstr.append(buffer);
 	}
 	return (newstr);
 }
@@ -58,6 +61,10 @@ int	main(void) {
 	while(getline(file,line)){
         buffer += line + "\n";
     }
+	
+	std::cout << "\nThe original text is ********************************************\n\n";
+	std::cout << buffer << std::endl;
+	std::cout << "*****************************************************************\n";
 
 	if (buffer.find(s1) < buffer.length()) {
 		allfile = ft_replace(buffer, s1, s2);
@@ -67,9 +74,6 @@ int	main(void) {
 	}
 	else {
 		std::cout << "\nThere's no coincidence\n";
-		std::cout << "The original text is ********************************************\n\n";
-		std::cout << buffer << std::endl;
-		std::cout << "*****************************************************************\n";
 	}
 	return 0;
 }

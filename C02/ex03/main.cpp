@@ -11,7 +11,7 @@ int	main() {
 	Point	P;
 
 	std::cout << "Let`s see if a point is inside a triangle defined by us" << std::endl;
-	std::cout << "Enter the first vertex of the triangle:\nX: ";
+	std::cout << "Enter the first vertex of the triangle:\n(NOTE: Enter only numbers and  \".\", sorry)\nX: ";
 	std::cin >> x;
 	std::cout << "Y: ";
 	std::cin >> y;
@@ -35,7 +35,6 @@ int	main() {
 	std::cin >> y;
 	P.setX(x);
 	P.setY(y);
-	std::cout << A << std::endl;
 	std::cout << "And the point is......";
 
 //Two equal vertex

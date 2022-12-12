@@ -17,7 +17,7 @@ class	Brain {
 		Brain	&operator=(const Brain &obj);
 
 		const std::string	*getIdeas() const;
-		void				setIdeas(std::string _ideas[100]);
+		void				setIdeas(std::string *_ideas);
 
 		void	printBrains () const;
 		void	printPtrBrain () const;

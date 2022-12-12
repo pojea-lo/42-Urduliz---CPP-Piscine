@@ -19,7 +19,7 @@ class Animal {
 
 		Animal		&operator= (const Animal &obj);
 
-		virtual void		makeSound() const;
+		virtual void		makeSound() const = 0;
 		void				printAnimal() const;
 
 };

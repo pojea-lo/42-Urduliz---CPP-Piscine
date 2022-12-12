@@ -5,7 +5,7 @@
 //Constructor and destructor
 Zombie::Zombie (void) {
 
-	std::cout << this->_name << " was created with empty" << std::endl;
+	std::cout << "Empty constructor was called" << std::endl;
 
 	return;
 }
@@ -13,7 +13,7 @@ Zombie::Zombie (void) {
 Zombie::Zombie (std::string name) {
 
 	this->_name = name;
-	std::cout << this->_name << " was created with complete" << std::endl;
+	std::cout << "Parameter constructor was called" << std::endl;
 
 	return;
 }
@@ -41,7 +41,7 @@ void	Zombie::setName(std::string name) {
 //function member
 void	Zombie::announce(void) const {
 
-	std::cout << this->_name << " is here" << std::endl;
+	std::cout << this->_name << " Brainnnnzzzzzz" << std::endl;
 
 	return;
 }

@@ -22,6 +22,6 @@ class Zombie {
 
 //funciones fuera de la clase
 Zombie*	newZombie(std::string name);
-void	randoChump(std::string name);
+void	randomChump(std::string name);
 
 #endif

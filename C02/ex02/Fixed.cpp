@@ -63,11 +63,10 @@ Fixed	Fixed::operator+ (const Fixed &obj) {
 	return (add);
 }
 
-Fixed	&Fixed::operator- (const Fixed &obj) {
+Fixed	Fixed::operator- (const Fixed &obj) {
 
-	Fixed	*rest = new Fixed (this->toFloat() - obj.toFloat());
-	delete rest;
-	return (*rest);
+	Fixed	rest(this->toFloat() - obj.toFloat());
+	return (rest);
 }
 
 Fixed	Fixed::operator* (const Fixed &obj) {
@@ -75,14 +74,13 @@ Fixed	Fixed::operator* (const Fixed &obj) {
 	return (this->toFloat() * obj.toFloat());
 }
 
-Fixed	&Fixed::operator/ (const Fixed &obj) {
+Fixed	Fixed::operator/ (const Fixed &obj) {
 
 	if (roundf(obj.res) / (1 << this->rawBits) == 0)
 		std::cout << "Impossible division by ";
 	else {
-		Fixed	*div = new Fixed(this->toFloat() / obj.toFloat());
-		delete div;
-		return (*div);
+		Fixed	div(this->toFloat() / obj.toFloat());
+		return (div);
 	}
 	return ((Fixed &)obj);
 }
@@ -143,7 +141,7 @@ bool	Fixed::operator!= (const Fixed &obj) {
 	return this->res != obj.res;
 }
 
-std::ostream&	operator<<(std::ostream& os, Fixed const &obj) {
+std::ostream	&operator<<(std::ostream &os, Fixed const &obj) {
 
 	os << obj.toFloat();
 	return (os);

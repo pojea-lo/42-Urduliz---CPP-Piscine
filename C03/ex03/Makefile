@@ -18,7 +18,7 @@ RM = rm -r -f
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) $^ -o $@ $(SAN)
+	$(CC) $(FLAGS) $^ -o $@ #$(SAN)
 
 clean:
 	$(RM) *.o *.dSYM

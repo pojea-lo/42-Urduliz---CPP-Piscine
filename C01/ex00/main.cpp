@@ -10,8 +10,7 @@ int	main(void) {
 	delete p;
 
 	std::cout << std::endl << "Then we use the randomChump function:" << std::endl;
-	p = newZombie ("Stich");
-	delete p;
-	
+	randomChump ("Stich");
+
 	return (0);
 }

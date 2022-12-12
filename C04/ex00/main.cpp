@@ -29,15 +29,19 @@ int	main() {
 
 	const WrongAnimal* h = new WrongAnimal();
 	const WrongAnimal* g = new WrongCat();
+	const WrongCat* e = new WrongCat();
 
 	std::cout << h->getType() << " " << std::endl;
 	h->makeSound();
 	std::cout << g->getType() << " " << std::endl;
 	g->makeSound(); //will output the Animal sound!
+	std::cout << e->getType() << " " << std::endl;
+	e->makeSound(); //will output the WrongCat sound!
 	std::cout << std::endl;
 
 	delete g;
 	delete h;
+	delete e;
 
 	return 0;
 }

@@ -14,10 +14,11 @@ int	main(int argv, char** argc) {
 	for (size_t i = 0; i < levelminus.length(); i++)
 		levelminus[i] = tolower(levelminus[i]);
 	for (int i = 0; i < 4; i++) {
-		if (level[i].compare(levelminus)) {
+		if (level[i].compare(levelminus) == 0) {
 			KKaren.complain(levelminus);
 			return 0;
 		}
 	}
+	std::cout << "What are you talking about!!!" << std::endl;
 	return 0;
 }

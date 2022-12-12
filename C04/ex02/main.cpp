@@ -4,7 +4,10 @@
 
 int	main() {
 
-	int	nstr = 6;
+//parte de no poder instanciar una clase tipo animal
+//	Animal	one;
+
+/*	int	nstr = 6;
 
 	Animal *str[nstr];
 
@@ -22,6 +25,24 @@ int	main() {
 
 	for (int i = 0; i < nstr; i++) 
 		delete str[i];
+*/
+	Cat	one;
+	Cat	two;
 
+//	one.setIdeas();
+	one.printCat();
+	two = one;
+	two.printCat();
+
+/*	Cat	*one = new Cat();
+
+	one->setIdeas();
+	one->printCat();
+	Cat	*two(one);
+	two->printCat();
+
+	delete one;
+	delete two;
+*/
 	return 0;
 }
