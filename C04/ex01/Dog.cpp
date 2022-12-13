@@ -1,5 +1,6 @@
 #include "Dog.hpp"
 
+//constructors & destructor
 Dog::Dog() {
 
 	std::cout << "Empty Dog constructor was called" << std::endl;
@@ -19,7 +20,7 @@ Dog::Dog (const Dog &obj) {
 
 Dog::~Dog () {
 
-	std::cout << "Dog destructor constructor was called" << std::endl;
+	std::cout << "Dog destructor was called" << std::endl;
 	delete cer;
 	return;
 }

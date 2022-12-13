@@ -14,12 +14,13 @@ Cat::Cat (const Cat &obj) {
 	std::cout << "Copy Cat constructor was called" << std::endl;
 	setType(obj.type);
 	cerebro = new Brain();
+	*cerebro = *obj.cerebro;
 	return;
 }
 
 Cat::~Cat () {
 
-	std::cout << "Cat destructor constructor was called" << std::endl;
+	std::cout << "Cat destructor was called" << std::endl;
 	delete cerebro;
 	return;
 }
@@ -27,7 +28,9 @@ Cat::~Cat () {
 //overload operators
 Cat		&Cat::operator= (const Cat &obj) {
 
+	std::cout << "Overload operator = was called" << std::endl;
 	type = obj.type;
+	*cerebro = *obj.cerebro;
 	return *this;
 }
 

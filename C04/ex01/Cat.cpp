@@ -24,8 +24,7 @@ Cat::Cat (const Cat &obj) {
 Cat::~Cat () {
 
 	std::cout << "Cat destructor was called" << std::endl;
-	if (cerebro != NULL)
-		delete cerebro;
+	delete cerebro;
 	return;
 }
 

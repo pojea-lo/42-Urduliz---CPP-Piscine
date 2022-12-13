@@ -20,10 +20,10 @@ int	main() {
 
 	for (int i = 0; i < nstr; i++) 
 		delete str[i];
-/*
+
 //prueba de deep copy - 
 
-	Cat 			prueba1;
+/*	Cat 			prueba1;
 	std::cout << "\nAt first, prueba1 is: " << std::endl;
 	prueba1.printCat();
 

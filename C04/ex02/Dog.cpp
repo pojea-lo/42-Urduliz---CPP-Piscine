@@ -13,12 +13,13 @@ Dog::Dog (const Dog &obj) {
 	std::cout << "Copy Dog constructor was called" << std::endl;
 	setType(obj.type);
 	cer = new Brain();
+	*cer = *obj.cer;
 	return;
 }
 
 Dog::~Dog () {
 
-	std::cout << "Dog destructor constructor was called" << std::endl;
+	std::cout << "Dog destructor was called" << std::endl;
 	delete cer;
 	return;
 }
@@ -27,6 +28,7 @@ Dog::~Dog () {
 Dog		&Dog::operator= (const Dog &obj) {
 
 	type = obj.type;
+	*cer = *obj.cer;
 	return *this;
 }
 
