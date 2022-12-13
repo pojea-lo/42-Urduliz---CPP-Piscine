@@ -4,10 +4,7 @@
 
 int	main() {
 
-//parte de no poder instanciar una clase tipo animal
-//	Animal	one;
-
-/*	int	nstr = 6;
+	int	nstr = 6;
 
 	Animal *str[nstr];
 
@@ -25,24 +22,24 @@ int	main() {
 
 	for (int i = 0; i < nstr; i++) 
 		delete str[i];
-*/
+/*
+//prueba de la deep copy	
 	Cat	one;
 	Cat	two;
 
-//	one.setIdeas();
 	one.printCat();
 	two = one;
 	two.printCat();
-
+*/
+//Y si trabajásemos con punteros, estaríamos llamando a los constructores por defecto y el copia del propio C, que por defecto hace una shallow copy
 /*	Cat	*one = new Cat();
 
-	one->setIdeas();
 	one->printCat();
 	Cat	*two(one);
 	two->printCat();
 
 	delete one;
-	delete two;
+//	delete two;//esto da SGF
 */
 	return 0;
 }

@@ -40,7 +40,9 @@ Ice		*Ice::clone () const {
 
 	std::cout << "Ice cloned was called" << std::endl;
 	Ice *neu = new Ice(*this);
+//otra opcion de ponerlo es:
 //	Ice *neu = new Ice();
+//	*neu = *this;
 	return neu;
 }
 

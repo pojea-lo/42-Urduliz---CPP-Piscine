@@ -9,11 +9,11 @@ int main()
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
-	std::cout << "\n1 parte ****************" << std::endl;
+	std::cout << "\n1 parte ****************\n" << std::endl;
 
 	ICharacter* me = new Character("me");
 
-	std::cout << "\n2 parte ****************" << std::endl;
+	std::cout << "\n2 parte ****************\n" << std::endl;
 
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
@@ -21,16 +21,16 @@ int main()
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 
-	std::cout << "\n3 parte ****************" << std::endl;
+	std::cout << "\n3 parte ****************\n" << std::endl;
 
 	ICharacter* bob = new Character("bob");
 
-	std::cout << "\n4 parte ****************" << std::endl;
+	std::cout << "\n4 parte ****************\n" << std::endl;
 
 	me->use(0, *bob);
 	me->use(1, *bob);
 
-	std::cout << "\n5 parte ****************" << std::endl;
+	std::cout << "\n5 parte ****************\n" << std::endl;
 
 	delete bob;
 	delete me;
