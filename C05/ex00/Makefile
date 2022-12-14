@@ -1,4 +1,4 @@
-NAME = Exception!!
+NAME = Exception
 
 SRC = main.cpp\
 	  Bureaucrat.cpp\
