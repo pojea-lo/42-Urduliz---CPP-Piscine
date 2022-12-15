@@ -10,7 +10,27 @@ Form::Form () : name("Magnific form"), status(false), GradeToSign(1), GradeToExe
 Form::Form (const std::string _name, int _GradeToSign, int _GradeToExecute) : name(_name), status(false), GradeToSign(_GradeToSign), GradeToExecute(_GradeToExecute) {
 
 	std::cout << "\nParameter Form constructor was called" << std::endl;
-
+	try {
+		if (GradeToSign > 150) {
+			(int &) GradeToSign = 150;
+			throw GradeTooLowException();
+		}
+		else if (GradeToSign < 1) {
+			(int &) GradeToSign = 1;
+			throw GradeTooHighException();
+		}
+		else if (GradeToExecute > 150) {
+			(int &) GradeToExecute = 150;
+			throw GradeTooLowException();
+		}
+		else if (GradeToExecute < 1) {
+			(int &) GradeToExecute = 1;
+			throw GradeTooLowException();
+		}
+	}
+	catch (std::exception &ex) {
+		std::cout << "You have exceed the posible limits, because: " << ex.what() << std::endl;
+	}
 	return;
 }
 
@@ -62,46 +82,14 @@ bool 	Form::getStatus() const {
 
 int		Form::getGradeToSign() const {
 
-	try {
-		if (GradeToSign < 1) {
-			throw GradeTooHighException();
-			return -1;
-		}
-		else if (GradeToSign > 150) {
-			throw GradeTooLowException();
-			return -1;
-		}
-
-		return GradeToSign;
-	}
-	catch (std::exception &exf) {
-		std::cout << "\nSorry, but you exceed the posible limits of the grade to Sign, because: " << exf.what() << std::endl;
-	}
-
-	return -1;
+	return GradeToSign;
 }
 
 int		Form::getGradeToExecute() const {
 
-	try {
-		if (GradeToExecute < 1) {
-			throw GradeTooHighException();
-			return -1;
-		}
-		else if (GradeToExecute > 150) {
-			throw GradeTooLowException();
-			return -1;
-		}
-
-		return GradeToExecute;
-	}
-	catch (std::exception &exf) {
-		std::cout << "\nSorry, but you exceed the posible limits of the grade to Execute, because: " << exf.what() << std::endl;
-	}
-
-	return -1;
+	return GradeToExecute;
 }
-
+	
 void	Form::setStatus() {
 
 	status = true;

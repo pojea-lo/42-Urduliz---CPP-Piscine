@@ -68,7 +68,6 @@ int	main() {
 	std::cout << "And now, you are going to create your own Form." << std::endl;
 	std::cout << "\nGRADE NOTE: The grade must be between 1 (max) & 150 (min). Let's see what's happend if you put another!!\n" << std::endl;
 	
-	point5:
 	std::cout << "Please, type his Name: ";
 	std::cin >> reponse;
 	
@@ -90,10 +89,8 @@ int	main() {
 
 	Form	two(reponse, nGrade, nGrade1);
 
-	if (two.getGradeToSign() == -1 || two.getGradeToExecute() == -1)
-		goto point5;
-
 	std::cout << two << std::endl;
+
 //lancemos las posibilidades
 	std::cout << "And now, what do you want to do?\n\nNOTE: Please, type only 1-2-3-4\n" << std::endl;
 	while (reponse.compare("Exit") != 0) {
