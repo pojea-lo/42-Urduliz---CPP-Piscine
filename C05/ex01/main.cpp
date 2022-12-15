@@ -89,8 +89,9 @@ int	main() {
 
 	Form	two(reponse, nGrade, nGrade1);
 
+	std::cout << two << std::endl;
 //lancemos las posibilidades
-	std::cout << "\nAnd now, what do you want to do?\n\nNOTE: Please, type only 1-2-3-4\n" << std::endl;
+	std::cout << "And now, what do you want to do?\n\nNOTE: Please, type only 1-2-3-4\n" << std::endl;
 	while (reponse.compare("Exit") != 0) {
 
 		point4:
@@ -104,11 +105,11 @@ int	main() {
 
 		switch (nGrade) {
 			case (1):
-				std::cout << "by by...!!" << std::endl;
+				std::cout << "\nby by...!!\n" << std::endl;
 				reponse = "Exit";
 				break;
 			case (2):
-				std::cout << "Please type how much you want to promote " << one.getName() << ": ";
+				std::cout << "\nPlease type how much you want to promote " << one.getName() << ": ";
 				std::cin >> reponse;
 				if (checkReponse(reponse) == -1)
 					goto point4;
@@ -116,10 +117,10 @@ int	main() {
 					nGrade = std::stoi(reponse);
 
 				one.UpGrade (nGrade);
-				std::cout << "After the promotion: " << one << std::endl;
+				std::cout << "\nAfter the promotion: " << one << std::endl;
 				break;
 			case (3):
-				std::cout << "Please type how much you want to degrade " << one.getName() << ": ";
+				std::cout << "\nPlease type how much you want to degrade " << one.getName() << ": ";
 				std::cin >> reponse;
 				if (checkReponse(reponse) == -1)
 					goto point2;
@@ -127,7 +128,10 @@ int	main() {
 					nGrade = std::stoi(reponse);
 
 				one.DownGrade (nGrade);
-				std::cout << "After the degradate: " << one << std::endl;
+				std::cout << "\nAfter the degradate: " << one << std::endl;
+				break;
+			case (4):
+				one.beSigned(two);
 				break;
 			default:
 				std::cout << "Please try again!!" << std::endl;

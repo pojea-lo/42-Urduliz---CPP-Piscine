@@ -1,15 +1,41 @@
 #include "Form.hpp"
 
 //constructors & destructors
-Form::Form () : name("Magnific form"), status(false), GradeToSign(5), GradeToExecute(2) {
+Form::Form () : name("Magnific form"), status(false), GradeToSign(1), GradeToExecute(1) {
 
 	std::cout << "Empty Form constructor was called" << std::endl;
 	return;
 }
 
-Form::Form (const std::string _name, const int _GradeToSign, const int _GradeToExecute) : name(_name), status(false), GradeToSign(_GradeToSign), GradeToExecute(_GradeToExecute) {
+Form::Form (const std::string _name, int _GradeToSign, int _GradeToExecute) : name(_name), status(false), GradeToSign(_GradeToSign), GradeToExecute(_GradeToExecute) {
 
-	std::cout << "Parameter Form constructor was called" << std::endl;
+	std::cout << "\nParameter Form constructor was called" << std::endl;
+	try {
+		if (GradeToSign < 1) {
+			_GradeToSign = 1;
+			std::cout << "Grade To Sign: ";
+			throw GradeTooHighException();
+		}
+		if (GradeToSign > 150) {
+			_GradeToSign = 150;
+			std::cout << "Grade To Sign: ";
+			throw GradeTooLowException();
+		}
+		if (GradeToExecute < 1) {
+	//		(int) GradeToExecute = 1;
+			std::cout << "Grade To Execute: ";
+			throw GradeTooHighException();
+		}
+		if (GradeToExecute > 150) {
+	//		(int) GradeToExecute = 150;
+			std::cout << "Grade To Execute: ";
+			throw GradeTooLowException();
+		}
+	}
+	catch (std::exception &exf) {
+		std::cout << _GradeToSign << std::endl;
+		std::cout << "Error: " << exf.what() << std::endl;
+	}
 	return;
 }
 
@@ -35,7 +61,7 @@ Form		Form::operator= (const Form &obj) {
 
 std::ostream	&operator<< (std::ostream &os, const Form &obj) {
 
-	os << obj.getName() << " has the next information:\n";
+	os << "\n" << obj.getName() << " has the next information:\n";
 	os << "Grade to sign:    " << obj.getGradeToSign() << std::endl; 
 	os << "Grade to execute: " << obj.getGradeToExecute() << std::endl; 
 	os << "Status: ";
@@ -69,4 +95,14 @@ int		Form::getGradeToExecute() const {
 	return GradeToExecute;
 }
 
+void	Form::setStatus() {
 
+	status = true;
+	return;
+}
+/*
+void	Form::setGradeToSign(int n) {
+
+	static_cast<int>(GradeToSign) = n;
+	return;
+}*/

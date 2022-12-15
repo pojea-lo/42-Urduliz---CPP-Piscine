@@ -14,7 +14,7 @@ class Form {
 
 	public:
 		Form();
-		Form(const std::string _name, const int _GradeToSign, const int _GradeToExecute);
+		Form(const std::string _name, int _GradeToSign, int _GradeToExecute);
 		Form(const Form &obj);
 		~Form();
 
@@ -25,12 +25,13 @@ class Form {
 		int				getGradeToSign() const;
 		int				getGradeToExecute() const;
 		void			setStatus();
+		void			setGradeToSign(int n);
 
 		class		GradeTooHighException : public std::exception {
 
 			public:
 				const char *what() const throw() {
-					return ("Gradee too high for the form!! I put you the maximum possible");
+					return ("Grade too high for the form!!\n");
 				}
 		};
 
@@ -38,7 +39,7 @@ class Form {
 
 			public:
 				const char *what() const throw() {
-					return ("Gradee too low for the form!! I put you the minimum possible");
+					return ("Grade too low for the form!!\n");
 				}
 		};
 

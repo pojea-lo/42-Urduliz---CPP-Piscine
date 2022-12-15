@@ -9,7 +9,7 @@ Bureaucrat::Bureaucrat(): Name(""), Grade(150) {
 
 Bureaucrat::Bureaucrat(std::string _Name, int _Grade): Name(_Name) {
 
-	std::cout << "Parameter Bureaucrat constructor was called" << std::endl;
+	std::cout << "\nParameter Bureaucrat constructor was called" << std::endl;
 	setGrade(_Grade, "new");
 	return;
 }
@@ -78,10 +78,8 @@ void	Bureaucrat::setGrade(int _Grade, std::string str) {
 		if (str.compare("down") == 0)
 			Grade += _Grade;
 	}
-	catch (std::exception &ex) {
-
-		std::cout << "Error: " << ex.what() << std::endl;
-
+	catch (std::exception &exb) {
+		std::cout << "Error: " << exb.what() << std::endl;
 	}
 
 	return;
@@ -97,5 +95,34 @@ void	Bureaucrat::UpGrade(int n) {
 void	Bureaucrat::DownGrade(int n) {
 
 	setGrade (n, "down");
+	return;
+}
+
+void	Bureaucrat::beSigned(Form &obj) {
+
+	try {
+		if (Grade <= obj.getGradeToSign() && !obj.getStatus()) {
+			obj.setStatus();
+			signForm(obj);
+		}
+		else {
+			signForm(obj);
+			throw Form::GradeTooLowException();
+		}
+	}
+	catch (std::exception &ex) {
+		std::cout << "Error: " << ex.what() << std::endl;
+	}
+
+	return;
+}
+
+void	Bureaucrat::signForm(Form &obj) {
+
+	if (obj.getStatus())
+		std::cout << "\n" << Name << " signs " << obj.getName() << "\n" << std::endl;
+	else
+		std::cout << "\n" << Name << " cannot sign " << obj.getName() << " beacause: " << std::endl;
+
 	return;
 }
