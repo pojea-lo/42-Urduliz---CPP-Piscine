@@ -23,15 +23,15 @@ int	checkReponse(std::string str) {
 	}
 	catch (int ex) {
 		if (ex == 0) {
-			std::cout << "Sorry, but you can try only with numbers!!" << std::endl;
+			std::cout << "\nSorry, but you can try only with numbers!!\n" << std::endl;
 			return -1;
 		}
 		else if (ex == 1) {
-			std::cout << "Ey, type only possitie numbers!!" << std::endl;
+			std::cout << "\nEy, type only possitie numbers!!\n" << std::endl;
 			return -1;
 		}
 		else if (ex == 2) {
-			std::cout << "Buffff, you are very powerfull!! Try again with smaller numbers please!!" << std::endl;
+			std::cout << "\nBuffff, you are very powerfull!! Try again with smaller numbers please!!\n" << std::endl;
 			return -1;
 		}
 	}
@@ -68,6 +68,7 @@ int	main() {
 	std::cout << "And now, you are going to create your own Form." << std::endl;
 	std::cout << "\nGRADE NOTE: The grade must be between 1 (max) & 150 (min). Let's see what's happend if you put another!!\n" << std::endl;
 	
+	point5:
 	std::cout << "Please, type his Name: ";
 	std::cin >> reponse;
 	
@@ -88,6 +89,9 @@ int	main() {
 		nGrade1 = std::stoi(reponse2);
 
 	Form	two(reponse, nGrade, nGrade1);
+
+	if (two.getGradeToSign() == -1 || two.getGradeToExecute() == -1)
+		goto point5;
 
 	std::cout << two << std::endl;
 //lancemos las posibilidades

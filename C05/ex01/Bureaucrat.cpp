@@ -79,7 +79,7 @@ void	Bureaucrat::setGrade(int _Grade, std::string str) {
 			Grade += _Grade;
 	}
 	catch (std::exception &exb) {
-		std::cout << "Error: " << exb.what() << std::endl;
+		std::cout << "\nError: " << exb.what() << std::endl;
 	}
 
 	return;

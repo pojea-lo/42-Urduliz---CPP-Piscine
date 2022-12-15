@@ -10,32 +10,7 @@ Form::Form () : name("Magnific form"), status(false), GradeToSign(1), GradeToExe
 Form::Form (const std::string _name, int _GradeToSign, int _GradeToExecute) : name(_name), status(false), GradeToSign(_GradeToSign), GradeToExecute(_GradeToExecute) {
 
 	std::cout << "\nParameter Form constructor was called" << std::endl;
-	try {
-		if (GradeToSign < 1) {
-			_GradeToSign = 1;
-			std::cout << "Grade To Sign: ";
-			throw GradeTooHighException();
-		}
-		if (GradeToSign > 150) {
-			_GradeToSign = 150;
-			std::cout << "Grade To Sign: ";
-			throw GradeTooLowException();
-		}
-		if (GradeToExecute < 1) {
-	//		(int) GradeToExecute = 1;
-			std::cout << "Grade To Execute: ";
-			throw GradeTooHighException();
-		}
-		if (GradeToExecute > 150) {
-	//		(int) GradeToExecute = 150;
-			std::cout << "Grade To Execute: ";
-			throw GradeTooLowException();
-		}
-	}
-	catch (std::exception &exf) {
-		std::cout << _GradeToSign << std::endl;
-		std::cout << "Error: " << exf.what() << std::endl;
-	}
+
 	return;
 }
 
@@ -87,12 +62,44 @@ bool 	Form::getStatus() const {
 
 int		Form::getGradeToSign() const {
 
-	return GradeToSign;
+	try {
+		if (GradeToSign < 1) {
+			throw GradeTooHighException();
+			return -1;
+		}
+		else if (GradeToSign > 150) {
+			throw GradeTooLowException();
+			return -1;
+		}
+
+		return GradeToSign;
+	}
+	catch (std::exception &exf) {
+		std::cout << "\nSorry, but you exceed the posible limits of the grade to Sign, because: " << exf.what() << std::endl;
+	}
+
+	return -1;
 }
 
 int		Form::getGradeToExecute() const {
 
-	return GradeToExecute;
+	try {
+		if (GradeToExecute < 1) {
+			throw GradeTooHighException();
+			return -1;
+		}
+		else if (GradeToExecute > 150) {
+			throw GradeTooLowException();
+			return -1;
+		}
+
+		return GradeToExecute;
+	}
+	catch (std::exception &exf) {
+		std::cout << "\nSorry, but you exceed the posible limits of the grade to Execute, because: " << exf.what() << std::endl;
+	}
+
+	return -1;
 }
 
 void	Form::setStatus() {
@@ -100,9 +107,3 @@ void	Form::setStatus() {
 	status = true;
 	return;
 }
-/*
-void	Form::setGradeToSign(int n) {
-
-	static_cast<int>(GradeToSign) = n;
-	return;
-}*/
