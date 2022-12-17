@@ -131,6 +131,6 @@ void	Bureaucrat::signForm(const Form &obj) const {
 
 void	Bureaucrat::executeForm(const Form &obj) const {
 
-	std::cout << Name << " executes " << obj.getName() << std::endl;
+	std::cout << Name << " executes " << obj.getName() << "\n" << std::endl;
 	return;
 }

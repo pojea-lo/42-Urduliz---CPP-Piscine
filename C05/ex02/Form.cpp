@@ -130,9 +130,9 @@ bool	Form::checkForm(const Bureaucrat &executor, const Form *form) const {
 	}
 	catch (int ex) {
 		if (ex == 1) 
-			std::cout << "Form " << form->getName() << " is NOT signed. I can't execute it" << std::endl;
+			std::cout << "Form " << form->getName() << " is NOT signed. I can't execute it\n" << std::endl;
 		else if (ex == 2) 
-			std::cout << executor.getName() << " doesn't have enough grade to execute the form " << form->getName() << std::endl;
+			std::cout << executor.getName() << " doesn't have enough grade to execute the form " << form->getName() << "\n" << std::endl;
 
 		return false;
 	}

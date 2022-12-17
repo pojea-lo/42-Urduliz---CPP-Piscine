@@ -3,7 +3,7 @@
 //constructors & destructors
 ShrubberyCreationForm::ShrubberyCreationForm() : Form("ShrubberyCreationForm", 145, 137), target("") {
 
-	std::cout << "Empty ShrubberyCreationForm constructor was called" << std::endl;
+	std::cout << "Empty ShrubberyCreationForm constructor was called\n" << std::endl;
 	return;
 }
 
@@ -48,8 +48,6 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 
 	if (checkForm(executor, this))
 		executor.executeForm(*this);
-	else
-		std::cout << "Stich" << std::endl;
 	return;
 }
 
