@@ -3,20 +3,20 @@
 //constructors & destructors
 Bureaucrat::Bureaucrat(): Name(""), Grade(150) {
 
-	std::cout << "Empty constructor was called" << std::endl;
+	std::cout << "Empty Bureaucrat constructor was called" << std::endl;
 	return;
 }
 
 Bureaucrat::Bureaucrat(std::string _Name, int _Grade): Name(_Name) {
 
-	std::cout << "Parameter constructor was called" << std::endl;
+	std::cout << "Parameter Bureaucrat constructor was called" << std::endl;
 	setGrade(_Grade, "new");
 	return;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &obj): Name(obj.Name), Grade(obj.Grade) {
 
-	std::cout << "Empty constructor was called" << std::endl;
+	std::cout << "Copy bureaucrat constructor was called" << std::endl;
 	return;
 }
 
@@ -29,9 +29,8 @@ Bureaucrat::~Bureaucrat() {
 //overload operators
 Bureaucrat	&Bureaucrat::operator= (const Bureaucrat &obj) {
 
-	std::cout << "Empty constructor was called" << std::endl;
+	std::cout << "Overload Bureaucrat = was called" << std::endl;
 	Grade = obj.Grade;
-//	(std::string) Name = obj.Name;
 	return *this;
 }
 

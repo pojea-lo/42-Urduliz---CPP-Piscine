@@ -1,6 +1,6 @@
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int	checkReponse(std::string str) {
 
@@ -114,7 +114,10 @@ point4:
 			case (4):
 				try {
 					if (index < 10) {
-						forms[index] = new ShrubberyCreationForm();
+						std::cout << "\nWat's your target?? Please, type one: ";
+						std::cin >> reponse;
+						forms[index] = new ShrubberyCreationForm(reponse);
+//						forms[index]->setTarget(reponse);//Como lo haríamos con el set??Porque claro, el Form no tiene setTarget
 						index++;
 					}
 					else
@@ -178,7 +181,146 @@ point4:
 						std::cout << "\nI'm sorry, but I can't find the form " << nGrade << " that you type!!\n" << std::endl;
 				}	
 				break;
+			
+			case (7):
+				try {
+					if (index < 10) {
+						std::cout << "\nWat's your target?? Please, type one: ";
+						std::cin >> reponse;
+						forms[index] = new RobotomyRequestForm(reponse);
+						index++;
+					}
+					else
+						throw 1;
+				}
+				catch (int ex) {
+					if (ex == 1)
+						std::cout << "Sorry but you work too much, you can't create more forms!!" << std::endl;
+				goto point2;
+				}
+				break;
 	
+			case (8):
+				std::cout << "\nI will try to sign a RobotomyRequestForm. Please type the number: ";
+
+				std::cin >> reponse;
+				if (checkReponse(reponse) == -1)
+					goto point2;
+				else
+					nGrade = std::stoi(reponse);
+				try {
+					if (nGrade < index) {
+						if (forms[nGrade]->getName().compare("RobotomyRequestForm") == 0)
+							one.beSigned(*forms[nGrade]);
+						else
+							throw 1;
+					}
+					else
+						throw 2;
+				}
+				catch (int ex) {
+					if (ex == 1)
+						std::cout << "\nAre you sure that the form " << nGrade << " is RobotomyRequestForm type??\n" << std::endl;
+					else if (ex == 2)
+						std::cout << "\nI'm sorry, but I can't find the form " << nGrade << " that you type!!\n" << std::endl;
+				}	
+				break;
+	
+			case (9):
+				std::cout << "\nI will try to execute a RobotomyRequestForm. Please type the number: ";
+
+				std::cin >> reponse;
+				if (checkReponse(reponse) == -1)
+					goto point2;
+				else
+					nGrade = std::stoi(reponse);
+				try {
+					if (nGrade < index) {
+						if (forms[nGrade]->getName().compare("RobotomyRequestForm") == 0)
+							forms[nGrade]->execute(one);
+						else
+							throw 1;
+					}
+					else
+						throw 2;
+				}
+				catch (int ex) {
+					if (ex == 1)
+						std::cout << "\nAre you sure that the form " << nGrade << " is RobotomyRequestForm type??\n" << std::endl;
+					else if (ex == 2)
+						std::cout << "\nI'm sorry, but I can't find the form " << nGrade << " that you type!!\n" << std::endl;
+				}	
+				break;
+
+			case (10):
+				try {
+					if (index < 10) {
+						std::cout << "\nWat's your target?? Please, type one: ";
+						std::cin >> reponse;
+						forms[index] = new PresidentialPardonForm(reponse);
+						index++;
+					}
+					else
+						throw 1;
+				}
+				catch (int ex) {
+					if (ex == 1)
+						std::cout << "Sorry but you work too much, you can't create more forms!!" << std::endl;
+				goto point2;
+				}
+				break;
+	
+			case (11):
+				std::cout << "\nI will try to sign a PresidentialPardonForm. Please type the number: ";
+
+				std::cin >> reponse;
+				if (checkReponse(reponse) == -1)
+					goto point2;
+				else
+					nGrade = std::stoi(reponse);
+				try {
+					if (nGrade < index) {
+						if (forms[nGrade]->getName().compare("PresidentialPardonForm") == 0)
+							one.beSigned(*forms[nGrade]);
+						else
+							throw 1;
+					}
+					else
+						throw 2;
+				}
+				catch (int ex) {
+					if (ex == 1)
+						std::cout << "\nAre you sure that the form " << nGrade << " is PresidentialPardonForm type??\n" << std::endl;
+					else if (ex == 2)
+						std::cout << "\nI'm sorry, but I can't find the form " << nGrade << " that you type!!\n" << std::endl;
+				}	
+				break;
+	
+			case (12):
+				std::cout << "\nI will try to execute a PresidentialPardonForm. Please type the number: ";
+
+				std::cin >> reponse;
+				if (checkReponse(reponse) == -1)
+					goto point2;
+				else
+					nGrade = std::stoi(reponse);
+				try {
+					if (nGrade < index) {
+						if (forms[nGrade]->getName().compare("PresidentialPardonForm") == 0)
+							forms[nGrade]->execute(one);
+						else
+							throw 1;
+					}
+					else
+						throw 2;
+				}
+				catch (int ex) {
+					if (ex == 1)
+						std::cout << "\nAre you sure that the form " << nGrade << " is PresidentialPardonForm type??\n" << std::endl;
+					else if (ex == 2)
+						std::cout << "\nI'm sorry, but I can't find the form " << nGrade << " that you type!!\n" << std::endl;
+				}	
+				break;
 
 			case (13):
 				std::cout << "\nNumber:      Type:" << std::endl;
@@ -190,21 +332,6 @@ point4:
 				std::cout << "Please try again!!" << std::endl;
 		}
 	}
-
-/*	Bureaucrat				one("Pablo", 25);
-	ShrubberyCreationForm	*two = new ShrubberyCreationForm();
-
-	std::cout << one << std::endl;
-	std::cout << two << std::endl;
-
-	one.beSigned(*two);
-	two->execute(one);
-
-	delete two;
-*/
-
-
-
 
 
 	return 0;

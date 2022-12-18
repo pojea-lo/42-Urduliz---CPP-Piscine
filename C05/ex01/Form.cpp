@@ -47,7 +47,7 @@ Form::~Form() {
 }
 
 //overload operators
-Form		Form::operator= (const Form &obj) {
+Form		&Form::operator= (const Form &obj) {
 
 	std::cout << "Overload Form = was called" << std::endl;
 	status = obj.status;

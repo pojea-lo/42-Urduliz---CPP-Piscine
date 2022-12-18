@@ -131,6 +131,21 @@ void	Bureaucrat::signForm(const Form &obj) const {
 
 void	Bureaucrat::executeForm(const Form &obj) const {
 
+	if (obj.getName().compare("ShrubberyCreationForm") == 0) {
+		std::cout << "A crear arboles" << std::endl;
+	}
+
+	else if (obj.getName().compare("RobotomyRequestForm") == 0) {
+		std::cout << "A hacer ruido" << std::endl;
+	}
+
+	else if (obj.getName().compare("PresidentialPardonForm") == 0) {
+		std::cout << "***************************************************" << std::endl;
+		std::cout << "*                                                 *" << std::endl;
+		std::cout << "* " <<  obj.getTarget() << " has been pardones by Zafod Beeblebrox." << std::endl;
+		std::cout << "*                                                 *" << std::endl;
+		std::cout << "***************************************************" << std::endl;
+	}
 	std::cout << Name << " executes " << obj.getName() << "\n" << std::endl;
 	return;
 }

@@ -18,7 +18,7 @@ class Form {
 		Form(const Form &obj);
 		~Form();
 
-		Form			operator= (const Form &obj);
+		Form			&operator= (const Form &obj);
 
 		std::string		getName() const;
 		bool			getStatus() const;

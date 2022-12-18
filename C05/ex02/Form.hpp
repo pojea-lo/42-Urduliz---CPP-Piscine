@@ -22,14 +22,15 @@ class Form {
 
 		Form			&operator= (const Form &obj);
 
-		std::string		getName() const;
-		bool			getStatus() const;
-		int				getGradeToSign() const;
-		int				getGradeToExecute() const;
-		void			setName(std::string _name);
-		void			setStatus();
-		void			setGradeToSign(int n);
-		void			setGradeToExecute(int n);
+		std::string			getName() const;
+		bool				getStatus() const;
+		int					getGradeToSign() const;
+		int					getGradeToExecute() const;
+		virtual std::string	getTarget() const = 0;
+		void				setName(std::string _name);
+		void				setStatus();
+		void				setGradeToSign(int n);
+		void				setGradeToExecute(int n);
 
 		virtual void	execute(const Bureaucrat &executor) const = 0;
 		bool			checkForm(const Bureaucrat &executor, const Form *form) const;

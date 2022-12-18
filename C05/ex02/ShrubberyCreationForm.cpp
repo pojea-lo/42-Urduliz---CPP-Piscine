@@ -1,9 +1,16 @@
 #include "ShrubberyCreationForm.hpp"
 
 //constructors & destructors
-ShrubberyCreationForm::ShrubberyCreationForm() : Form("ShrubberyCreationForm", 145, 137), target("") {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string reponse) : Form("ShrubberyCreationForm", 145, 137), target(reponse) {
 
 	std::cout << "Empty ShrubberyCreationForm constructor was called\n" << std::endl;
+	return;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) {
+
+	std::cout << "Parameter ShrubberyCreationForm constructor was called\n" << std::endl;
+	target = obj.target;
 	return;
 }
 
@@ -14,6 +21,13 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 }
 
 //overload operators
+ShrubberyCreationForm	&ShrubberyCreationForm::operator= (const ShrubberyCreationForm *obj) {
+
+	std::cout << "Operator ShrubberyCreationForm = was called\n" << std::endl;
+	target = obj->target;
+	return *this;
+}
+
 std::ostream	&operator<< (std::ostream &os, const ShrubberyCreationForm *obj) {
 
 	os << "\n" << obj->getName() << " has the next information:\n";

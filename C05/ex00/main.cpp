@@ -43,10 +43,10 @@ int	main() {
 	std::string		reponse;
 	int				nGrade;
 
-	std::cout << "Hello, you are going to create your own Bureaucrat.\nPlease, type your Name: ";
+	std::cout << "Hello, you are going to create your own Bureaucrat.\n\nPlease, type your Name: ";
 	std::cin >> reponse;
 	Bureaucrat 		one(reponse, 150);
-	std::cout << "GRADE NOTE: The grade must be between 1 (max) & 150 (min). Let's see what's happend if you put another!!" << std::endl;
+	std::cout << "\nGRADE NOTE: The grade must be between 1 (max) & 150 (min). Let's see what's happend if you put another!!\n" << std::endl;
 	point1:
 	std::cout << "And now your grade: ";
 	std::cin >> reponse;
@@ -57,9 +57,9 @@ int	main() {
 		nGrade = std::stoi(reponse);
 
 	one.setGrade(nGrade, "new");
-	std::cout << "At first: " << one << std::endl; 
+	std::cout << "\nAt first: " << one << std::endl; 
 
-	std::cout << "And now, what do you want to do?\nNOTE: Please, type only 1-2-3" << std::endl;
+	std::cout << "And now, what do you want to do?\n\nNOTE: Please, type only 1-2-3\n" << std::endl;
 	while (reponse.compare("Exit") != 0) {
 
 		point2:
@@ -73,11 +73,11 @@ int	main() {
 
 		switch (nGrade) {
 			case (1):
-				std::cout << "by by...!!" << std::endl;
+				std::cout << "\nby by...!!" << std::endl;
 				reponse = "Exit";
 				break;
 			case (2):
-				std::cout << "Please type how much you want to promote " << one.getName() << ": ";
+				std::cout << "\nPlease type how much you want to promote " << one.getName() << ": ";
 				std::cin >> reponse;
 				if (checkReponse(reponse) == -1)
 					goto point2;
@@ -85,10 +85,10 @@ int	main() {
 					nGrade = std::stoi(reponse);
 
 				one.UpGrade (nGrade);
-				std::cout << "After the promotion: " << one << std::endl;
+				std::cout << "\nAfter the promotion: " << one << std::endl;
 				break;
 			case (3):
-				std::cout << "Please type how much you want to degrade " << one.getName() << ": ";
+				std::cout << "\nPlease type how much you want to degrade " << one.getName() << ": ";
 				std::cin >> reponse;
 				if (checkReponse(reponse) == -1)
 					goto point2;
@@ -96,7 +96,7 @@ int	main() {
 					nGrade = std::stoi(reponse);
 
 				one.DownGrade (nGrade);
-				std::cout << "After the degradate: " << one << std::endl;
+				std::cout << "\nAfter the degradate: " << one << std::endl;
 				break;
 			default:
 				std::cout << "Please try again!!" << std::endl;

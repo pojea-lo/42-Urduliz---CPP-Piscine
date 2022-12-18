@@ -9,11 +9,11 @@ class ShrubberyCreationForm : public Form {
 		std::string		target;
 
 	public:
-		ShrubberyCreationForm();
+		ShrubberyCreationForm(std::string reponse);
 		ShrubberyCreationForm(const ShrubberyCreationForm &obj);
 		~ShrubberyCreationForm();
 
-		ShrubberyCreationForm		&operator=(const ShrubberyCreationForm &obj);
+		ShrubberyCreationForm		&operator=(const ShrubberyCreationForm *obj);
 
 		std::string		getTarget() const;
 		void			setTarget(std::string _target);
