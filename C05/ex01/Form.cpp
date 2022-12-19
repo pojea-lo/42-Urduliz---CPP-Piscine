@@ -95,3 +95,25 @@ void	Form::setStatus() {
 	status = true;
 	return;
 }
+
+//methods
+void	Form::beSigned(const Bureaucrat &obj) {
+
+	try {
+		if (GradeToSign >= obj.getGrade() && status == 0) {
+			setStatus();
+			obj.signForm(*this);
+		}
+		else if (status == 1)
+			std::cout << "\nForm signed yet\n" << std::endl;
+		else {
+			obj.signForm(*this);
+			throw Form::GradeTooLowException();
+		}
+	}
+	catch (std::exception &ex) {
+		std::cout << "Error: " << ex.what() << std::endl;
+	}
+
+	return;
+}

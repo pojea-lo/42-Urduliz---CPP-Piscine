@@ -115,6 +115,27 @@ void	Form::setGradeToExecute(int _n) {
 }
 
 //methods
+void	Form::beSigned(const Bureaucrat &obj) {
+
+	try {
+		if (GradeToSign >= obj.getGrade() && status == 0) {
+			setStatus(true);
+			obj.signForm(*this);
+		}
+		else if (status == 1)
+			std::cout << "\nForm signed yet\n" << std::endl;
+		else {
+			obj.signForm(*this);
+			throw Form::GradeTooLowException();
+		}
+	}
+	catch (std::exception &ex) {
+		std::cout << "Error: " << ex.what() << std::endl;
+	}
+
+	return;
+}
+
 bool	Form::checkForm(const Bureaucrat &executor, const Form *form) const {
 
 	try {

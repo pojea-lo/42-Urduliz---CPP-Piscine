@@ -27,7 +27,6 @@ class	Bureaucrat {
 
 		void		UpGrade(int n);
 		void		DownGrade(int n);
-		void		beSigned(Form &obj);
 		void		signForm(const Form &obj) const;
 		void		executeForm(const Form &obj) const;
 

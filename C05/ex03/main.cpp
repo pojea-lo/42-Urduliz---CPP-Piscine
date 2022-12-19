@@ -152,7 +152,7 @@ point4:
 				try {
 					if (nGrade < index) {
 						if (forms[nGrade]->getName().compare("ShrubberyCreationForm") == 0)
-							one.beSigned(*forms[nGrade]);
+							forms[nGrade]->beSigned(one);
 						else
 							throw 1;
 					}
@@ -204,7 +204,7 @@ point4:
 				try {
 					if (nGrade < index) {
 						if (forms[nGrade]->getName().compare("RobotomyRequestForm") == 0)
-							one.beSigned(*forms[nGrade]);
+							forms[nGrade]->beSigned(one);
 						else
 							throw 1;
 					}
@@ -256,7 +256,7 @@ point4:
 				try {
 					if (nGrade < index) {
 						if (forms[nGrade]->getName().compare("PresidentialPardonForm") == 0)
-							one.beSigned(*forms[nGrade]);
+							forms[nGrade]->beSigned(one);
 						else
 							throw 1;
 					}

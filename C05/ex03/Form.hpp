@@ -32,6 +32,7 @@ class Form {
 		void				setGradeToSign(int n);
 		void				setGradeToExecute(int n);
 
+		void			beSigned(const Bureaucrat &obj);
 		virtual void	execute(const Bureaucrat &executor) const = 0;
 		bool			checkForm(const Bureaucrat &executor, const Form *form) const;
 

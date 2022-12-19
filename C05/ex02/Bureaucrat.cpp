@@ -98,27 +98,6 @@ void	Bureaucrat::DownGrade(int n) {
 	return;
 }
 
-void	Bureaucrat::beSigned(Form &obj) {
-
-	try {
-		if (Grade <= obj.getGradeToSign() && obj.getStatus() == 0) {
-			obj.setStatus();
-			signForm(obj);
-		}
-		else if (obj.getStatus() == 1)
-			std::cout << "\nForm signed yet\n" << std::endl;
-		else {
-			signForm(obj);
-			throw Form::GradeTooLowException();
-		}
-	}
-	catch (std::exception &ex) {
-		std::cout << "Error: " << ex.what() << std::endl;
-	}
-
-	return;
-}
-
 void	Bureaucrat::signForm(const Form &obj) const {
 
 	if (obj.getStatus())

@@ -132,7 +132,7 @@ int	main() {
 				std::cout << "\nAfter the degradate: " << one << std::endl;
 				break;
 			case (4):
-				one.beSigned(two);
+				two.beSigned(one);
 				break;
 			default:
 				std::cout << "Please try again!!" << std::endl;
