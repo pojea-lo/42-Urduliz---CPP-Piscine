@@ -131,33 +131,41 @@ void	Bureaucrat::signForm(const Form &obj) const {
 
 void	Bureaucrat::executeForm(const Form &obj) const {
 
-	if (obj.getName().compare("ShrubberyCreationForm") == 0) {
-		std::string	file_name = obj.getTarget() + "_shrubbery";
-		std::ofstream file(file_name);
-		file << "Lala" << std::endl;
-		file << "         _-_        " << std::endl;
-		file << "      /~~   ~~\\     " << std::endl;
-		file << "   /~~         ~~\\  " << std::endl;
-		file << "  {               } " << std::endl;
-		file << "   \\  _-     -_  /  " << std::endl;
-		file << "     ~  \\\\ //  ~    " << std::endl;
-		file << "  _- -   | | _- _   " << std::endl;
-		file << "    _ -  | |   -_   " << std::endl;
-		file << "        // \\\\       " << std::endl;
-		file.close();
-	}
+	try {
+		if (obj.getName().compare("ShrubberyCreationForm") == 0) {
+			std::string	file_name = obj.getTarget() + "_shrubbery";
+			std::ofstream file(file_name);
+			if (!file)
+				throw 1;
+			file << "         _-_        " << std::endl;
+			file << "      /~~   ~~\\     " << std::endl;
+			file << "   /~~         ~~\\  " << std::endl;
+			file << "  {               } " << std::endl;
+			file << "   \\  _-     -_  /  " << std::endl;
+			file << "     ~  \\\\ //  ~    " << std::endl;
+			file << "  _- -   | | _- _   " << std::endl;
+			file << "    _ -  | |   -_   " << std::endl;
+			file << "        // \\\\       " << std::endl;
+			file.close();
+		}
 
-	else if (obj.getName().compare("RobotomyRequestForm") == 0) {
-		std::cout << "A hacer ruido" << std::endl;
-	}
+		else if (obj.getName().compare("RobotomyRequestForm") == 0) {
+			std::cout << "\a";
+			std::cout << obj.getTarget() << " has been robotomized successfully 50\% of the time\n" << std::endl;
+		}
 
-	else if (obj.getName().compare("PresidentialPardonForm") == 0) {
-		std::cout << "***************************************************" << std::endl;
-		std::cout << "*                                                 *" << std::endl;
-		std::cout << "* " <<  obj.getTarget() << " has been pardones by Zafod Beeblebrox." << std::endl;
-		std::cout << "*                                                 *" << std::endl;
-		std::cout << "***************************************************" << std::endl;
+		else if (obj.getName().compare("PresidentialPardonForm") == 0) {
+			std::cout << "***************************************************" << std::endl;
+			std::cout << "*                                                 *" << std::endl;
+			std::cout << "* " <<  obj.getTarget() << " has been pardones by Zafod Beeblebrox." << std::endl;
+			std::cout << "*                                                 *" << std::endl;
+			std::cout << "***************************************************" << std::endl;
+		}
+		std::cout << Name << " executes " << obj.getName() << "\n" << std::endl;
 	}
-	std::cout << Name << " executes " << obj.getName() << "\n" << std::endl;
+	catch (int ex) {
+		if (ex == 1)
+			std::cout << "I don't know, but I can't open more files!!" << std::endl;
+	}
 	return;
 }

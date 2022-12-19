@@ -3,6 +3,7 @@
 
 #include "Form.hpp"
 #include <fstream>
+#include <unistd.h>
 
 class Form;
 
