@@ -1,11 +1,12 @@
 #include "exception.hpp"
+#include "CharType.hpp"
 
 int	main(int argc, char *argv[]) {
 
 	char			char_ex;
-	int				int_ex;
-	float			flo_ex;
-	double			doub_ex;
+//	int				int_ex;
+//	float			flo_ex;
+//	double			doub_ex;
 	std::string		argument;
 
 	try {
@@ -15,24 +16,22 @@ int	main(int argc, char *argv[]) {
 			return -1;
 		}
 		argument = static_cast<std::string> (argv[1]);
-		for (size_t i = 0; i < argument.length(); i++) {
-
-			if (argument[i] 
-
-
+		
+		CharType	one;
+		char_ex = one.convert (argument);
 
 
 
 
-			char_ex = static_cast<char> (65);
-			std::cout << char_ex << std::endl;
-			int_ex = static_cast<int> ('a');
+
+			std::cout << "\'" << static_cast<char> (42.0f) << "\'" << std::endl;
+/*			int_ex = static_cast<int> ('a');
 			std::cout << int_ex << std::endl;
-			flo_ex = static_cast<float> (2.5);
+			flo_ex = static_cast<float> (2.235264525345345636);
 			std::cout << flo_ex << std::endl;
 			doub_ex = static_cast<double> (2.5);
 			std::cout << doub_ex << std::endl;
-
+*/
 
 
 //		}
