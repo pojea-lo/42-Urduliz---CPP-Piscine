@@ -1,13 +1,13 @@
 #include "exception.hpp"
 #include "CharType.hpp"
 
+#include <iomanip>
+
 int	main(int argc, char *argv[]) {
 
-	char			*char_ex;
-//	int				int_ex;
-//	float			flo_ex;
-//	double			doub_ex;
+	std::string		char_tmp;
 	std::string		argument;
+
 
 	try {
 
@@ -19,40 +19,57 @@ int	main(int argc, char *argv[]) {
 		
 //char cast	
 	
-		CharType	one(argument);
-	
-		char_ex = one.convert(argument);
+		CharType	one;
 
-		if (char_ex != 0)
-			std::cout << "My char cast:       " << char_ex << std::endl;
-		else//guarrada, quitar de aqui!!
-			std::cout << "My char cast:       impossible" << std::endl;
+		char_tmp = one.check(argument);
 
-		if (one.getLen() == 1)
-			std::cout << "Original char cast: " << static_cast<char> (argv[1][0]) << std::endl;
-//****ESCRIBIR DENTRO DE LOS PARENTESIS EL ARGUMENTO INTRODUCIDO****
-		else {
-			std::cout << "Original char cast: " << static_cast<char> (56.0f) << std::endl;
+		try {
+			if (char_tmp.compare("one") == 0) 
+				std::cout << "My char cast:       " << argv[1][0] << std::endl;
+			else if (char_tmp.compare("ok") == 0) 
+				std::cout << "My char cast:       " << static_cast<char> (std::stoi(argument)) << std::endl;
+			else 
+				std::cout << "My char cast:       " << char_tmp << std::endl;
+		}
+
+		catch (std::exception &ex) {
+
+			std::cout << "impossible" << std::endl;
 		}
 
 
+//int cast
 
-/*			int_ex = static_cast<int> ('a');
-			std::cout << int_ex << std::endl;
-			flo_ex = static_cast<float> (2.235264525345345636);
-			std::cout << flo_ex << std::endl;
-			doub_ex = static_cast<double> (2.5);
-			std::cout << doub_ex << std::endl;
-*/
+		try {
+			std::cout << "My int cast:        " << std::stoi(argument) << std::endl;
+		}	
+		
+		catch (std::exception &ex) {
 
+			std::cout << "impossible" << std::endl;
+		}
 
-//		}
+//float cast
 
+		try {
+			std::cout << "My float cast:      " << std::stof(argument) << std::endl;
+		}	
+		
+		catch (std::exception &ex) {
 
+			std::cout << "impossible" << std::endl;
+		}
 
+//double cast
 
+		try {
+			std::cout << "My float cast:      " << std::stod(argument) << std::endl;
+		}	
+		
+		catch (std::exception &ex) {
 
-
+			std::cout << "impossible" << std::endl;
+		}
 	}
 
 	catch (int i) {
@@ -61,9 +78,5 @@ int	main(int argc, char *argv[]) {
 			std::cout << "Bad number of arguments" << std::endl;
 	}
 
-/*	catch (std::exception &ex) {
-		std::cout << ex.what() << std::endl;
-	}
-*/
 	return 0;
 }
