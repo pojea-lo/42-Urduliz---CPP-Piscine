@@ -1,7 +1,7 @@
 #ifndef CHARTYPE_HPP
 # define CHARTYPE_HPP
 
-#include "exception.hpp"
+#include <iostream>
 
 class CharType {
 
@@ -18,6 +18,7 @@ class CharType {
 		CharType	&operator= (const CharType &obj);
 
 		std::string		check(const std::string &str);
+		int				count(const std::string &str);
 
 };
 

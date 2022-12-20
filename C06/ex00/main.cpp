@@ -1,6 +1,6 @@
-#include "exception.hpp"
 #include "CharType.hpp"
 
+#include <string>
 #include <iomanip>
 
 int	main(int argc, char *argv[]) {
@@ -31,9 +31,8 @@ int	main(int argc, char *argv[]) {
 			else 
 				std::cout << "My char cast:       " << char_tmp << std::endl;
 		}
-
+		
 		catch (std::exception &ex) {
-
 			std::cout << "impossible" << std::endl;
 		}
 
@@ -45,29 +44,28 @@ int	main(int argc, char *argv[]) {
 		}	
 		
 		catch (std::exception &ex) {
-
 			std::cout << "impossible" << std::endl;
 		}
 
 //float cast
 
+		std::cout << std::fixed; 
+		std::cout << std::setprecision(one.count(argument));
 		try {
-			std::cout << "My float cast:      " << std::stof(argument) << std::endl;
+			std::cout << "My float cast:      " << std::stof(argument) << "f" << std::endl;
 		}	
 		
 		catch (std::exception &ex) {
-
 			std::cout << "impossible" << std::endl;
 		}
 
 //double cast
 
 		try {
-			std::cout << "My float cast:      " << std::stod(argument) << std::endl;
+			std::cout << "My double cast:     " << std::stod(argument) << std::endl;
 		}	
 		
 		catch (std::exception &ex) {
-
 			std::cout << "impossible" << std::endl;
 		}
 	}
