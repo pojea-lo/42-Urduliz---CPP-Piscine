@@ -10,13 +10,15 @@ class CharType {
 
 	public:
 
-		CharType();
+		CharType(const std::string &str);
 		CharType(const CharType &obj);
 		~CharType();
 
 		CharType	&operator= (const CharType &obj);
 
-		char	convert(const std::string &str);
+		int		getLen() const;
+
+		char	*convert(std::string &str);
 		bool	check(const std::string &str);
 
 		class		BadArguments : public std::exception {
@@ -29,5 +31,6 @@ class CharType {
 
 
 };
+
 
 #endif
