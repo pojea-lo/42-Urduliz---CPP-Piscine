@@ -1,4 +1,4 @@
-#include "CharType.hpp"
+#include "Auxiliar.hpp"
 
 #include <string>
 #include <iomanip>
@@ -19,7 +19,7 @@ int	main(int argc, char *argv[]) {
 		
 //char cast	
 	
-		CharType	one;
+		Auxiliar	one;
 
 		char_tmp = one.check(argument);
 

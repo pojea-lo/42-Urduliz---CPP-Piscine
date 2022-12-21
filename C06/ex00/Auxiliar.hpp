@@ -1,9 +1,9 @@
-#ifndef CHARTYPE_HPP
-# define CHARTYPE_HPP
+#ifndef AUXILIAR_HPP
+# define AUXILIAR_HPP
 
 #include <iostream>
 
-class CharType {
+class Auxiliar {
 
 	private:
 		int			n;
@@ -11,11 +11,11 @@ class CharType {
 
 	public:
 
-		CharType();
-		CharType(const CharType &obj);
-		~CharType();
+		Auxiliar();
+		Auxiliar(const Auxiliar &obj);
+		~Auxiliar();
 
-		CharType	&operator= (const CharType &obj);
+		Auxiliar	&operator= (const Auxiliar &obj);
 
 		std::string		check(const std::string &str);
 		int				count(const std::string &str);

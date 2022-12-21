@@ -1,37 +1,37 @@
-#include "CharType.hpp"
+#include "Auxiliar.hpp"
 
 //constructors & destructors
-CharType::CharType () : n(0) , tmp_str("") {
+Auxiliar::Auxiliar () : n(0) , tmp_str("") {
 
-	std::cout << "Emty CharType constructor was called" << std::endl;
+	std::cout << "Emty Auxiliar constructor was called" << std::endl;
 	return;
 }
 
-CharType::CharType (const CharType &obj) {
+Auxiliar::Auxiliar (const Auxiliar &obj) {
 
-	std::cout << "Copy CharType constructor was called" << std::endl;
+	std::cout << "Copy Auxiliar constructor was called" << std::endl;
 	n = obj.n;
 	tmp_str = obj.tmp_str;
 	return;
 }
 
-CharType::~CharType () {
+Auxiliar::~Auxiliar () {
 
-	std::cout << "CharType destructor was called" << std::endl;
+	std::cout << "Auxiliar destructor was called" << std::endl;
 	return;
 }
 
 //overload operator
-CharType	&CharType::operator= (const CharType &obj) {
+Auxiliar	&Auxiliar::operator= (const Auxiliar &obj) {
 
-	std::cout << "Operator CharType = was called" << std::endl;
+	std::cout << "Operator Auxiliar = was called" << std::endl;
 	n = obj.n;
 	tmp_str = obj.tmp_str;
 	return *this;
 }
 
 //methods
-std::string		CharType::check (const std::string &str) {
+std::string		Auxiliar::check (const std::string &str) {
 
 	try {
 //caso de que sea solo 1 bit la cadena y no sea numero, por lo que lo ha de devolver tal cual
@@ -56,7 +56,7 @@ std::string		CharType::check (const std::string &str) {
 	return ("ok");
 }
 
-int		CharType::count (const std::string &str) {
+int		Auxiliar::count (const std::string &str) {
 
 	n = 0;
 	size_t	i = -1;
@@ -66,19 +66,29 @@ int		CharType::count (const std::string &str) {
 
 		if (str[i] == '.') 
 			j = i;
+		else if ((str[i] < 47 || str[i] > 58) && str[i] != '-' && str[i] != '+')
+			j = 1000;
 	}
 
-	while (i < str.length()) {
+	while (i < str.length() && j != 1000) {
 
+		std::cout << "La i: " << i << " - " << str[i] << std::endl;
 		if (str[i] < 47 || str[i] > 58) {
-			return (n);
+			break;
 		}		
 		n++;
 		i++;
 	}
+	
+	std::cout << "La j: " << j << std::endl;
 
-	if (j != 0)
-		return (static_cast<int> (str.length() - (j + 1)));
+	if (j != 0 && j != 1000) {
+		n = static_cast<int> (i - (j + 1));
+		std::cout << "La n: " << n << std::endl;
+		if (n == 0)
+			return (1);
+		return n;
+	}
 	else
 		return (1);
 }

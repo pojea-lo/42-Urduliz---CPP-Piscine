@@ -1,7 +1,7 @@
 NAME = convert
 
 SRC = main.cpp\
-	  CharType.cpp\
+	  Auxiliar.cpp\
 
 OBJS = $(SRC: .cpp=.o)
 
