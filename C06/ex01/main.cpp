@@ -1,94 +1,93 @@
 #include <iostream>
 
-//uintptr_t	serialize(Data *ptr);
-//Data 		*deserialize(uintptr_t raw);
+struct Data {
 
-uintptr_t	serialize(char *ptr);
-char 		*deserialize(uintptr_t raw);
+	int			n = 41;
+	float		f = 42.01f;
+	char		c = 'l';
+	std::string	str = "stich";
+
+	uintptr_t	buf[5];
+	
+};
+
+uintptr_t	serialize(Data *ptr);
+Data 		*deserialize(uintptr_t raw);
 
 int	main() {
 
-	size_t			len = 0;
-	int				aux = 0;
-	std::string		reponse = "";
+		Data	test;
 
-//petición de datos al usuario
-/*
-	std::cout << "What size do you want of structure?: ";
-point1:
-	try {
-		std::cin >> reponse;
-		len = std::stoi(reponse);
-		if (len >= 65535)
-			throw 1;
-	}
-	catch (std::exception &ex) {
-		std::cout << "Please, type only possitive numbers. Try again." << std::endl;
-		goto point1;
-	}
-	catch (int ex) {
-		std::cout << "Please, type only possitive numbers. Try again." << std::endl;
-		goto point1;
-	}
-*/
-//inicializo las estructuras de datos para trabajar con ellas
+		std::cout << "Partimos de unos valores___________________________________\n" << std::endl;
+		std::cout << " *El int:                         " << test.n << std::endl;  
+		std::cout << " *El float:                       " << test.f << std::endl;           
+		std::cout << " *El char:                        " << test.c << std::endl;           
+		std::cout << " *La string:                      " << test.str << std::endl;         
 
-/*	int		vector1[len];
-	for (size_t i = 0; i < len; i++) {
-		*vector1[i] = new int;
-		vector1[i] = static_cast<int>(i);
-	}
-*/
-	float	vector2[len];
-	for (size_t i = 0; i < len; i++)
-		vector2[i] = static_cast<float>(i);
+		std::cout << "\nPartimos de unas direcciones de memoria____________________\n" << std::endl;
+		std::cout << " *El int:                         " << &test.n << std::endl;           
+		std::cout << " *El float:                       " << &test.f << std::endl;           
+		std::cout << " *El char:                        " << static_cast<void *>(&test.c) << std::endl;           
+		std::cout << " *La string:                      " << &test.str << std::endl;           
+		std::cout << " *La estructura Data:             " << &test << std::endl;           
 
-	char	vector3[len];
-	for (size_t i = 0; i < len; i++) {
-		if ((aux + 65) == 91)
-			aux = 0;
-		vector3[i] = aux + 65;
-		aux++;
-	}
+		std::cout << "\nAl aplicarle el serialize__________________________________\n" << std::endl;
+		uintptr_t tmp = serialize(&test);
+		std::cout << " *El uintptr de la estructura:    " << tmp << std::endl;
 
-	std::string		vector4[len];
-	for (size_t i = 0; i < len; i++) {
-		std::string	s(1, vector3[i]); 
-		vector4[i] = "string " + s;
-	}
+		Data new_test;
+		std::cout << "Partimos de unos valores de New Test_________________________\n" << std::endl;
+		std::cout << " *El int:                         " << new_test.n << std::endl;  
+		std::cout << " *El float:                       " << new_test.f << std::endl;           
+		std::cout << " *El char:                        " << new_test.c << std::endl;           
+		std::cout << " *La string:                      " << new_test.str << std::endl;         
+		std::cout << " *La dirección de mem. de New Test:     " << &new_test << std::endl;
 
-//inicio los casteos con SEIALIZE
-//casteo de int
+		std::cout << "Le cambiamos los valores a New Test_________________________\n" << std::endl;
+		new_test.n = 51;
+		new_test.f = 52.01f;
+		new_test.c = 'o';
+		new_test.str = "lilo";
+		std::cout << " *El int:                         " << new_test.n << std::endl;  
+		std::cout << " *El float:                       " << new_test.f << std::endl;           
+		std::cout << " *El char:                        " << new_test.c << std::endl;           
+		std::cout << " *La string:                      " << new_test.str << std::endl;         
+		std::cout << " *La dirección de mem. de New Test:     " << &new_test << std::endl;
+
+		new_test = *deserialize(tmp);
+		std::cout << "\nAl aplicarle el deserialize a New Test, los valores son___\n" << std::endl;
+		std::cout << " *El int:                         " << new_test.n << std::endl;  
+		std::cout << " *El float:                       " << new_test.f << std::endl;           
+		std::cout << " *El char:                        " << new_test.c << std::endl;           
+		std::cout << " *La string:                      " << new_test.str << std::endl;         
+		std::cout << " *La dirección de mem. de New Test:     " << &new_test << std::endl;
 	
-//	for (size_t i = 0; i < len; i++) 
-
-		char	c = 'a';
-		char	*pr = &c;
-
-		std::cout << static_cast<void *>(pr) << std::endl;
-		std::cout << static_cast<void *>(&c) << std::endl;
-		uintptr_t tmp = serialize(pr);
-		std::cout << tmp << std::endl;
-		std::cout << deserialize(tmp) << std::endl;
-	
-
-
-
-
-
 	return 0;
 }
 
 
-uintptr_t	serialize(char *ptr) {
+uintptr_t	serialize(Data *ptr) {
 
-	return (reinterpret_cast<uintptr_t>(ptr));
+	uintptr_t ret = reinterpret_cast<uintptr_t>(ptr);
+
+	void	*ptr1 = &ptr->n;
+		ptr->buf[0] = reinterpret_cast<uintptr_t>(ptr1);
+		std::cout << " *El uintptr de int:              " << ptr->buf[0] << std::endl;
+	ptr1 = &ptr->f;
+		ptr->buf[1] = reinterpret_cast<uintptr_t>(ptr1);
+		std::cout << " *El uintptr de float:            " << ptr->buf[1] << std::endl;
+	ptr1 = &ptr->c;
+		ptr->buf[2] = reinterpret_cast<uintptr_t>(ptr1);
+		std::cout << " *El uintptr de char:             " << ptr->buf[2] << std::endl;
+	ptr1 = &ptr->str;
+		ptr->buf[4] = reinterpret_cast<uintptr_t>(ptr1);
+		std::cout << " *El uintptr de string:           " << ptr->buf[4] << std::endl;
+	return (ret);
 }
 
-char			*deserialize(uintptr_t raw) {
+Data		*deserialize(uintptr_t raw) {
 
-
-	return (reinterpret_cast<char *>(raw));
+	return (reinterpret_cast<Data *>(raw));
 }
 
 
