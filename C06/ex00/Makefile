@@ -1,4 +1,4 @@
-NAME = convert
+NAME = static
 
 SRC = main.cpp\
 	  Auxiliar.cpp\
