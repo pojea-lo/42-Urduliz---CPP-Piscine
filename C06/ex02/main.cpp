@@ -37,7 +37,7 @@ Base	*generate(void) {
 //genero numero aleatorio
 	srand(time(NULL));
 	n = rand() % 3;
-	std::cout << "El número aleatorio es: " << n << std::endl;
+	std::cout << "El número aleatorio es:       " << n << std::endl;
 
 	switch (n) {
 		case 0:

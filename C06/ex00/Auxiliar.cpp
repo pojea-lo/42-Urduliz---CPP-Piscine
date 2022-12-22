@@ -72,7 +72,6 @@ int		Auxiliar::count (const std::string &str) {
 
 	while (i < str.length() && j != 1000) {
 
-		std::cout << "La i: " << i << " - " << str[i] << std::endl;
 		if (str[i] < 47 || str[i] > 58) {
 			break;
 		}		
@@ -80,11 +79,8 @@ int		Auxiliar::count (const std::string &str) {
 		i++;
 	}
 	
-	std::cout << "La j: " << j << std::endl;
-
 	if (j != 0 && j != 1000) {
 		n = static_cast<int> (i - (j + 1));
-		std::cout << "La n: " << n << std::endl;
 		if (n == 0)
 			return (1);
 		return n;

@@ -2,10 +2,10 @@
 
 struct Data {
 
-	int			n = 41;
-	float		f = 42.01f;
-	char		c = 'l';
-	std::string	str = "stich";
+	int			n;
+	float		f;
+	char		c;
+	std::string	str;
 
 	uintptr_t	buf[5];
 	
@@ -17,6 +17,10 @@ Data 		*deserialize(uintptr_t raw);
 int	main() {
 
 		Data	test;
+		test.n = 41;
+		test.f = 42.01f;
+		test.c = 'l';
+		test.str = "stich";
 
 		std::cout << "Partimos de unos valores___________________________________\n" << std::endl;
 		std::cout << " *El int:                         " << test.n << std::endl;  
@@ -36,14 +40,19 @@ int	main() {
 		std::cout << " *El uintptr de la estructura:    " << tmp << std::endl;
 
 		Data new_test;
-		std::cout << "Partimos de unos valores de New Test_________________________\n" << std::endl;
+		new_test.n = 41;
+		new_test.f = 42.01f;
+		new_test.c = 'l';
+		new_test.str = "stich";
+		
+		std::cout << "\nPartimos de unos valores de New Test_________________________\n" << std::endl;
 		std::cout << " *El int:                         " << new_test.n << std::endl;  
 		std::cout << " *El float:                       " << new_test.f << std::endl;           
 		std::cout << " *El char:                        " << new_test.c << std::endl;           
 		std::cout << " *La string:                      " << new_test.str << std::endl;         
 		std::cout << " *La dirección de mem. de New Test:     " << &new_test << std::endl;
 
-		std::cout << "Le cambiamos los valores a New Test_________________________\n" << std::endl;
+		std::cout << "\nLe cambiamos los valores a New Test_________________________\n" << std::endl;
 		new_test.n = 51;
 		new_test.f = 52.01f;
 		new_test.c = 'o';
@@ -89,5 +98,3 @@ Data		*deserialize(uintptr_t raw) {
 
 	return (reinterpret_cast<Data *>(raw));
 }
-
-
