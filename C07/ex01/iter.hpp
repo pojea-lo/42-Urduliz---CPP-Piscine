@@ -17,7 +17,7 @@ template <class myType>
 
 void	print(const myType &obj) {
 
-	std::cout << obj << std::endl;
+	std::cout << obj << "  ";
 	return;
 }
 
