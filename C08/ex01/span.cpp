@@ -69,7 +69,7 @@ int		&Span::operator[](unsigned int n) {
 void	Span::addNumber(int n) {
 
 	if (id < nelem) {
-		test[id] = n;
+		test.push_back(n);
 		id++;
 	}
 	else
@@ -82,20 +82,15 @@ int	Span::shortestSpan() {
 	if (id < 2)
 		throw std::out_of_range("Insufficient number of nodes");
 
-	size_t	i = 0;
-	int		aux = 0;
+	std::sort(test.begin(), test.end());
 
-	std::cout << id << std::endl;
-	while (i < id - 1) {
-
-		if (test[i] > test[i + 1]) {
-			aux = test[i];
-			test[i] = test[i + 1]; 
-			test[i + 1] = aux;
-		}
-		i++;
+	std::vector<int>	res;
+	for (size_t i = 0; i < id - 1; i++) {
+		res.push_back(test[i + 1] - test[i]);
+		std::cout << res[i] << std::endl;
 	}
-	return (test[1] - test[0]);
+
+	return (*min_element(res.begin(), res.end()));
 }
 
 int	Span::longestSpan() {
@@ -103,15 +98,12 @@ int	Span::longestSpan() {
 	if (id < 2)
 		throw std::out_of_range("Insufficient number of nodes");
 
-	int		max = test[0];
-	int		min = test[0];
+	int		max = *max_element(test.begin(), test.end());
+	int		min = *min_element(test.begin(), test.end());
 
-	for (size_t i = 0; i < id; i++) {
-		if (test[i] < min)
-			min = test[i];
-		else if (test[i] > max)
-			max = test[i];
-	}
-	
+	std::cout << max << std::endl;
+	std::cout << min << std::endl;
+
+
 	return (max - min);
 }
