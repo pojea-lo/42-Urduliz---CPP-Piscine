@@ -87,7 +87,6 @@ int	Span::shortestSpan() {
 	std::vector<int>	res;
 	for (size_t i = 0; i < id - 1; i++) {
 		res.push_back(test[i + 1] - test[i]);
-		std::cout << res[i] << std::endl;
 	}
 
 	return (*min_element(res.begin(), res.end()));
@@ -100,10 +99,6 @@ int	Span::longestSpan() {
 
 	int		max = *max_element(test.begin(), test.end());
 	int		min = *min_element(test.begin(), test.end());
-
-	std::cout << max << std::endl;
-	std::cout << min << std::endl;
-
 
 	return (max - min);
 }

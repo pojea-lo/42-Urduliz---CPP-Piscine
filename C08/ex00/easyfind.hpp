@@ -7,17 +7,17 @@
 
 template <class T>
 
-void    easyfind(const std::vector<T> &t, const int &n) {
+void    easyfind(std::vector<T> &t, const int &n) {
 
     try {
-        auto pos = std::find(t.begin(), t.end(), n);
+		typename std::vector<T>::iterator pos = std::find(t.begin(), t.end(), n);
         if (pos != t.end())   
             std::cout << "Yes" << std::endl;
         else
             throw 1;
     }
     catch (int ex) {
-        std::cout << "No coincidence!!" << std::endl;
+        td::cout << "No coincidence!!" << std::endl;
     }
     return;
 

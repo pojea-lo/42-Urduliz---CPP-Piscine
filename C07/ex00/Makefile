@@ -1,7 +1,6 @@
 NAME = function_templates
 
 SRC = main.cpp\
-	  Fixed.cpp\
 
 OBJS = $(SRC: .cpp=.o)
 

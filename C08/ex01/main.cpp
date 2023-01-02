@@ -62,17 +62,17 @@ point2:
 		return 0;
 	}
 
-	std::cout << "The vector is: ";
+	std::cout << "\nThe vector is: ";
 	for (size_t i = 0; i < test.getId(); i++)
 		std::cout << test.getTest(i) << "   ";
 	std::cout << std::endl;
 
 	try {
 		n = test.shortestSpan();
-		std::cout << "The shortest span of the serie is: " << n << std::endl;
+		std::cout << "\nThe shortest span of the serie is: " << n << std::endl;
 		
 		n = test.longestSpan();
-		std::cout << "The longest span of the serie is: " << n << std::endl;
+		std::cout << "\nThe longest span of the serie is: " << n << std::endl;
 	}
 	catch (std::exception &ex) {
 		std::cout << ex.what() << std::endl;

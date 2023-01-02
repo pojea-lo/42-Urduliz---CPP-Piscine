@@ -3,7 +3,11 @@
 int     main() {
 
     std::vector<int>     vector(5);
-    vector = {1,2,3,4,5};
+	vector[0] = 1;
+	vector[1] = 2;
+	vector[2] = 3;
+	vector[3] = 4;
+	vector[4] = 5;
     int                  n1 = 3;
     int                  n2 = 7;
     int                  n3 = 5;
