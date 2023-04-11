@@ -40,7 +40,7 @@ BitcoinExchange		&BitcoinExchange::operator=(const BitcoinExchange &obj) {
 void	BitcoinExchange::print_db() {
 
 	std::cout << "The database for the change is: " << std::endl;
-	for(std::map<int, int>::iterator it = this->database.begin(); it != this->database.end(); it++) {
+	for(std::map<int, float>::iterator it = this->database.begin(); it != this->database.end(); it++) {
 		std::cout << it->first << " -> " << it->second << std::endl;
 	}
 	std::cout << "The size of the database is: " << this->database.size() << std::endl;
@@ -71,17 +71,17 @@ double	BitcoinExchange::change(std::string str1, std::string str2) {
 
 	str1.replace(4, 1, "");
 	str1.replace(6, 1, "");
-	
-	return (std::atof(str2.c_str()));
+	std::map<int, float>::iterator	itlow = this->database.lower_bound(std::atoi(str1.c_str()));
+	return (std::atof(str2.c_str()) * itlow->second);
 }
 
 //external functions
-std::map<int, int>	ft_createdb() {
+std::map<int, float>	ft_createdb() {
 
-	std::map<int, int>	ret;
-	std::string			line;
-	std::string			first_data;
-	std::string			second_data;
+	std::map<int, float>	ret;
+	std::string				line;
+	std::string				first_data;
+	std::string				second_data;
 
 	std::ifstream file(file_name);
 
@@ -93,9 +93,10 @@ std::map<int, int>	ft_createdb() {
 		first_data.replace(4, 1, "");
 		first_data.replace(6, 1, "");
 		getline(stream, second_data, ',');
-		ret.insert(std::pair<int, int>(std::atoi(first_data.c_str()), std::atoi(second_data.c_str())));
+		ret.insert(std::pair<int, float>(std::atoi(first_data.c_str()), std::atof(second_data.c_str())));
 	}
 	file.close();
+	
 	return (ret);
 }
 
@@ -157,10 +158,6 @@ bool	ft_checkFirst(std::string *str) {
 
 	std::string		aux;
 
-	// if ((*str) == "date ") {
-	// 	(*str) = "";
-	// 	return (false);
-	// }
 	if (str->size() != 11 || (*str)[4] != '-' || (*str)[7] != '-' || (*str)[10] != ' ') {
 		(*str) = str->append(" -> Error: bad date input");
 		return (false);
@@ -197,4 +194,3 @@ bool	ft_isdigit(std::string str) {
 	}
 	return true;
 }
-
