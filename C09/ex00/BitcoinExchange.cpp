@@ -50,11 +50,29 @@ void	BitcoinExchange::print_db() {
 void	BitcoinExchange::print_input() {
 
 	std::cout << "The input is: " << std::endl;
-	for(std::multimap<std::string, int>::iterator it = this->input.begin(); it != this->input.end(); it++) {
-		std::cout << it->first << " -> " << it->second << std::endl;
+	for(std::multimap<std::string, std::string>::iterator it = this->input.begin(); it != this->input.end(); it++) {
+		if (it->first.find("Error") != std::string::npos)
+			std::cout << it->first << std::endl; 
+		else {
+			if (it->second.find("Error") != std::string::npos)
+				std::cout << it->first << " -> " << it->second << std::endl;
+			else {
+				std::cout << it->first << " -> " << it->second << " = " << this->change(it->first, it->second) << std::endl;
+			}
+		}
 	}
 	std::cout << "The size of the input is: " << this->input.size() << std::endl;
 	return;
+}
+
+double	BitcoinExchange::change(std::string str1, std::string str2) {
+
+	double	ret;
+
+	str1.replace(4, 1, "");
+	str1.replace(6, 1, "");
+	
+	return (std::atof(str2.c_str()));
 }
 
 //external functions
@@ -66,9 +84,11 @@ std::map<int, int>	ft_createdb() {
 	std::string			second_data;
 
 	std::ifstream file(file_name);
+
 	getline(file, line);
 	while (getline(file, line)) {
-		std::stringstream stream(line);
+		std::stringstream	stream(line);
+
 		getline(stream, first_data, ',');
 		first_data.replace(4, 1, "");
 		first_data.replace(6, 1, "");
@@ -79,35 +99,36 @@ std::map<int, int>	ft_createdb() {
 	return (ret);
 }
 
-std::multimap<std::string, int> ft_createinput(char *str) {
+std::multimap<std::string, std::string> ft_createinput(char *str) {
 
-	std::multimap<std::string, int>	ret;
-	std::string						line;
-	std::string						first_data;
-	std::string						second_data;
-	bool							aux;
+	std::multimap<std::string, std::string>	ret;
+	std::string								line;
+	std::string								first_data;
+	std::string								second_data;
+	bool									aux;
 
-	std::ifstream file(str);
+	std::ifstream	file(str);
+
 	if (!file) {
 		file.close();
 		std::cout << "No input file" << std::endl;
 		exit (1);
 	}
+	getline(file, line);
 	while (getline(file, line)) {
-		std::stringstream stream(line);
+		std::stringstream	stream(line);
+
 		getline(stream, first_data, '|');
 		aux = ft_checkFirst(&first_data);
-		// std::cout << first_data << std::endl;
-		getline(stream, second_data, '\n');
 		if (aux) {
+			getline(stream, second_data, '\n');
 			ft_checkSecond(&second_data);
-			// std::cout << second_data << std::endl;
 		}
-		else
-			second_data = "KK";
+		else {
+			second_data = "";
+		}
+	 	ret.insert(std::pair<std::string, std::string>(first_data, second_data));
 	}
-
-
 	file.close();
 	return (ret);
 }
@@ -121,13 +142,12 @@ bool	ft_checkSecond(std::string *str) {
 	str->replace(0, i, "");
 	for (size_t i = 0; i < str->size(); i++) {
 		if (!(isdigit((*str)[i])) && (*str)[i] != '.') {
-			(*str) = "-7";
+			(*str) = str->append(" -> Error: bad amount input");
 			return false;
 		}   
 	}
-	std::cout << std::atof(str->c_str()) << std::endl;
-	if (std::atof(str->c_str()) < 0 || std::atof(str->c_str()) > 1000) {
-			(*str) = "-7";
+	if (std::atof(str->c_str()) > 1000.0) {
+			(*str) = str->append(" -> Error: bad amount input");
 			return false;
 		}   
 	return true;
@@ -137,31 +157,33 @@ bool	ft_checkFirst(std::string *str) {
 
 	std::string		aux;
 
-	if ((*str) == "date ")
-		return (false);
+	// if ((*str) == "date ") {
+	// 	(*str) = "";
+	// 	return (false);
+	// }
 	if (str->size() != 11 || (*str)[4] != '-' || (*str)[7] != '-' || (*str)[10] != ' ') {
-		(*str) = str->append(" - Error: bad input");
+		(*str) = str->append(" -> Error: bad date input");
 		return (false);
 	}
 	for (size_t i = 0; i < str->size(); i++) {
 		if (!(isdigit ((*str)[i])) && ((*str)[i] != '-') && ((*str)[i] != ' ')) {
-			(*str) = str->append(" - Error: bad input");
+			(*str) = str->append(" -> Error: bad date input");
 			return (false);
 		}
 	}
 	aux = str->substr(0, 4);
 	if (!(ft_isdigit(aux)) || (std::atoi(aux.c_str()) < 2009) || (std::atoi(aux.c_str()) > 2023)) {
-		(*str) = str->append(" - Error: bad input");
+		(*str) = str->append(" -> Error: bad date input");
 		return (false);
 	}
 	aux = str->substr(5, 2);
 	if (!(ft_isdigit(aux)) || (std::atoi(aux.c_str()) < 1) || (std::atoi(aux.c_str()) > 12)) {
-		(*str) = str->append(" - Error: bad input");
+		(*str) = str->append(" -> Error: bad date input");
 		return (false);
 	}
 	aux = str->substr(8, 2);
 	if (!(ft_isdigit(aux)) || (std::atoi(aux.c_str()) < 1) || (std::atoi(aux.c_str()) > 31)) {
-		(*str) = str->append(" - Error: bad input");
+		(*str) = str->append(" -> Error: bad input");
 		return (false);
 	}
 	return (true);

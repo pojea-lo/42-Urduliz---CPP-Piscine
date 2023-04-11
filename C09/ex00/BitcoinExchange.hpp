@@ -13,8 +13,8 @@
 class BitcoinExchange {
 
 	private:
-		std::map <int, int>					database;
-		std::multimap <std::string, int>	input;
+		std::map <int, int>							database;
+		std::multimap <std::string, std::string>	input;
 
 	public:
 		BitcoinExchange();
@@ -26,14 +26,15 @@ class BitcoinExchange {
 
 		void	print_db();
 		void	print_input();
+		double	change(std::string str1, std::string str2);
 
 	
 };
 
-std::map<int, int>				ft_createdb();
-std::multimap<std::string, int>	ft_createinput(char *str);
-bool							ft_checkFirst(std::string *str);
-bool							ft_checkSecond(std::string *str);
-bool							ft_isdigit(std::string str);
+std::map<int, int>						ft_createdb();
+std::multimap<std::string, std::string>	ft_createinput(char *str);
+bool									ft_checkFirst(std::string *str);
+bool									ft_checkSecond(std::string *str);
+bool									ft_isdigit(std::string str);
 
 #endif

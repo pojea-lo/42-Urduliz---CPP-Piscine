@@ -8,7 +8,9 @@ int		main(int argc, char **argv) {
 	}
 	else {
 		BitcoinExchange		prueba(argv[1]);
-//		prueba.print_db();
+		// prueba.print_db();
+		prueba.print_input();
+
 	}
 
 	return 0;
