@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <ctype.h>
+#include <sstream>
 
 class  RPN {
 
@@ -14,15 +15,18 @@ class  RPN {
 	
 	public:
 		RPN();
-		RPN(int argc, char **str);
+		RPN(char *str);
 		RPN(const RPN &obj);
 		~RPN();
 
 		RPN &operator=(const RPN &obj);
-		
+
+		void			ft_print();
+		std::stack<int>	ft_create(char *str);
+		int				ft_operate(char aux);
+
 };
 
-bool			ft_check(int argc, char **str);
-std::stack<int>	ft_create(const std::string &str);
+bool			ft_check(char *str);
 
 #endif
