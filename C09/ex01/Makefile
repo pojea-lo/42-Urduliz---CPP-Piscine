@@ -7,7 +7,7 @@ OBJS = $(SRC: .cpp=.o)
 
 CC = c++
  
-FLAGS = -Wall -Werror -Wextra -std=c++98 -Wno-unused-parameter -Wno-unused-variable#BORRAR ESTE ULTIMO FLAG!
+FLAGS = -Wall -Werror -Wextra -std=c++98
 SAN = -g3 -fsanitize=address
 
 RM = rm -r -f

@@ -11,7 +11,7 @@
 class  RPN {
 
 	private:
-		std::stack<int>     list;
+		std::stack<float>     list;
 	
 	public:
 		RPN();
@@ -21,12 +21,12 @@ class  RPN {
 
 		RPN &operator=(const RPN &obj);
 
-		void			ft_print();
-		std::stack<int>	ft_create(char *str);
-		int				ft_operate(char aux);
+		void				ft_print();
 
 };
 
-bool			ft_check(char *str);
+bool				ft_check(char *str);
+std::stack<float>	ft_create(char *str);
+float				ft_operate(char aux, float sol1, float sol2);
 
 #endif
