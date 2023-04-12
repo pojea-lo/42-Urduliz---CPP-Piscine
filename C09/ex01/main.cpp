@@ -8,9 +8,9 @@ int     main(int argc, char **argv) {
         return 1;
     }
     else {
-
-        RPN     neu;
-    }
+      
+        RPN     neu(argc, argv);
+    }   
 
     return 0;
 }

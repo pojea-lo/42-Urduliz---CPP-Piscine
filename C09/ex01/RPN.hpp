@@ -3,22 +3,26 @@
 
 #include <iostream>
 #include <stack>
+#include <cstdlib>
+#include <cstring>
+#include <ctype.h>
 
-class  RPN{
+class  RPN {
 
-    private:
-        std::stack<int>     list;
-    
-    public:
-        RPN();
-        RPN(const std::string &str);
-        RPN(const RPN &obj);
-        ~RPN();
+	private:
+		std::stack<int>     list;
+	
+	public:
+		RPN();
+		RPN(int argc, char **str);
+		RPN(const RPN &obj);
+		~RPN();
 
-        RPN operator=(const RPN &obj);
-        
+		RPN &operator=(const RPN &obj);
+		
 };
 
-std::stack  ft_create(std::string &str);
+bool			ft_check(int argc, char **str);
+std::stack<int>	ft_create(const std::string &str);
 
 #endif
