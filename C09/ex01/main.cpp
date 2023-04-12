@@ -2,14 +2,16 @@
 
 int     main(int argc, char **argv) {
 
-    if (argc == 1) {
+    if (argc != 2) {
 
-        std::cout << "Error: You forgot the numbers!!" << std::endl;
+        std::cout << "Error: Bad number of arguments!!" << std::endl;
         return 1;
     }
     else {
       
-        RPN     neu(argc, argv);
+        RPN     neu(argv[1]);
+
+		neu.ft_print();
     }   
 
     return 0;
