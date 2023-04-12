@@ -125,8 +125,10 @@ float	ft_operate(char aux, float sol2, float sol1) {
 		if (sol1 != 0) {
 			return (sol2 / sol1);
 		}
-		else
-			return 0;
+		else {
+			std::cout << "Error: Impossible to divide by zero" << std::endl;
+			exit (-1);
+		}
 	}
 
 	return 0;
