@@ -31,14 +31,21 @@ PmergeMe::~PmergeMe() {
 	return;
 }
 
-std::string		PmergeMe::getVector() {
+std::vector<int>	PmergeMe::getVector() {
 
-	std::string		aux;
+	return i_vector;
+}
+
+std::string		PmergeMe::getVec() {
+
+	std::string			aux;
+	std::stringstream	ss;
 
 	for (std::vector<int>::iterator it = this->i_vector.begin(); it != this->i_vector.end(); ++it) {
-		aux.append(std::to_string(*it));
-		aux.append(" ");
+		ss << *it;
+		ss << " ";
 	}
+	aux.append(ss.str());
 
 	return aux;
 }
@@ -56,16 +63,28 @@ PmergeMe    &PmergeMe::operator=(const PmergeMe &obj) {
 //class functions
 std::ostream	&operator<<(std::ostream &os, PmergeMe &obj) {
 
-    os << obj.getVector();
+    os << obj.getVec();
     return os;
 }
 
-void	PmergeMe::sorta() {
+// template <typename T>
+void	PmergeMe::orden(std::vector<int> container) {
 
+	std::vector<int>	aux1;
+	std::vector<int>	aux2;
 
-
-
-
+	for (size_t i = 0; i < (container.size() / 2); i++) {
+		aux1.push_back(container[i]);
+	}
+	ft_sort (&aux1);
+	for (size_t i = (container.size() / 2); i < container.size(); i++) {
+		aux2.push_back(container[i]);
+	}
+	ft_sort (&aux2);
+	while (!container.empty()) {
+		container.pop_back();
+	}
+	return;
 }
 
 //external functions
@@ -88,4 +107,11 @@ bool    ft_check (char *str) {
 	}
 
 	return true;
+}
+
+void	ft_sort (std::vector<int> &aux) {
+
+	int 	auxiliar;
+
+		
 }

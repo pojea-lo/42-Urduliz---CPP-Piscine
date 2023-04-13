@@ -12,7 +12,7 @@ int     main(int argc, char **argv) {
 		PmergeMe    init(argc, argv);
 
 		std::cout << "Before: " << init << std::endl;
-		init.sorta();
+		init.orden(init.getVector());
 		std::cout << "After: " << init << std::endl;
 	}
 

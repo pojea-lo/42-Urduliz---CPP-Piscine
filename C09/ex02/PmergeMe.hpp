@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <cctype>
 #include <string>
+#include <sstream>
 
 class PmergeMe {
 
@@ -22,9 +23,10 @@ class PmergeMe {
 
 		PmergeMe    &operator=(const PmergeMe &obj);
 		
-		std::string		getVector();
+		std::vector<int>		getVector();
+		std::string				getVec();
 
-		void			sorta();
+		void			orden(std::vector<int> container);
 
 };
 
