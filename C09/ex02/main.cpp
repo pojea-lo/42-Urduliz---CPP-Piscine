@@ -9,7 +9,11 @@ int     main(int argc, char **argv) {
 	}
 	else {
 
-		PmergeMe    init(argv);
+		PmergeMe    init(argc, argv);
+
+		std::cout << "Before: " << init << std::endl;
+		init.sorta();
+		std::cout << "After: " << init << std::endl;
 	}
 
 	return 0;

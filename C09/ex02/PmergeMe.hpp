@@ -5,6 +5,8 @@
 #include <vector>
 #include <set>
 #include <cstdlib>
+#include <cctype>
+#include <string>
 
 class PmergeMe {
 
@@ -14,15 +16,19 @@ class PmergeMe {
 
 	public:
 		PmergeMe();
-		PmergeMe(char **str);
+		PmergeMe(int argc, char **str);
 		PmergeMe(const PmergeMe &obj);
 		~PmergeMe();
 
 		PmergeMe    &operator=(const PmergeMe &obj);
+		
+		std::string		getVector();
 
+		void			sorta();
 
 };
 
-bool    ft_check(char **str);
+std::ostream	&operator<<(std::ostream &os, PmergeMe &obj);
+bool    		ft_check(char *str);
 
 #endif
