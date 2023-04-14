@@ -11,7 +11,10 @@ PmergeMe::PmergeMe(int argc, char **str) {
 	for (int i = 1; i < argc; i++) {
 		if (ft_check(str[i])) {
 
-			this->i_vector.push_back(atoi(str[i]));
+			if (std::find(this->i_vector.begin(), this->i_vector.end(), atoi(str[i])) == this->i_vector.end())
+				this->i_vector.push_back(atoi(str[i]));
+			else
+				std::cout << "This data '" << str[i] << "' is duplicated. I delete it!!!" << std::endl;
 		}
 		else 
 			exit (-1);
@@ -70,20 +73,45 @@ std::ostream	&operator<<(std::ostream &os, PmergeMe &obj) {
 // template <typename T>
 void	PmergeMe::orden(std::vector<int> container) {
 
-	std::vector<int>	aux1;
-	std::vector<int>	aux2;
+	std::set<int>	aux1;
+	std::set<int>	aux2;
 
 	for (size_t i = 0; i < (container.size() / 2); i++) {
-		aux1.push_back(container[i]);
+		aux1.insert(container[i]);
 	}
-	ft_sort (&aux1);
+//	for (std::set<int>::iterator it = aux1.begin(); it != aux1.end(); it++)
+//		std::cout << *it << std::endl; 
 	for (size_t i = (container.size() / 2); i < container.size(); i++) {
-		aux2.push_back(container[i]);
+		aux2.insert(container[i]);
 	}
-	ft_sort (&aux2);
+//	for (std::set<int>::iterator it = aux2.begin(); it != aux2.end(); it++)
+//		std::cout << *it << std::endl; 
+	
 	while (!container.empty()) {
 		container.pop_back();
 	}
+	for (std::set<int>::iterator it1 = aux1.begin(); it1 != aux1.end(); it1++) {
+
+		if (!aux2.empty()) {
+			for (std::set<int>::iterator it2 = aux2.begin(); it2 != aux2.end(); it2++) {
+
+				if (*it1 < *it2) {
+					container.push_back(*it1);
+	//				aux1.erase(it1);
+					break;
+				}
+				else {
+					container.push_back(*it2);
+					aux2.begin() = it2++;
+	//				break;
+				}
+				std::cout << "Paso siguiente" << std::endl;
+			}
+		}
+	}
+	for (std::vector<int>::iterator it = container.begin(); it != container.end(); it++)
+		std::cout << *it << std::endl; 
+
 	return;
 }
 
@@ -107,11 +135,4 @@ bool    ft_check (char *str) {
 	}
 
 	return true;
-}
-
-void	ft_sort (std::vector<int> &aux) {
-
-	int 	auxiliar;
-
-		
 }
