@@ -13,7 +13,7 @@ int     main(int argc, char **argv) {
 
 		std::cout << "Before: " << init << std::endl;
 		init.orden();
-		std::cout << "After: " << init << std::endl;
+		std::cout << "After:  " << init << std::endl;
 	}
 
 	return 0;

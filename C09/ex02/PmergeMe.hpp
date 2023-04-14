@@ -31,10 +31,10 @@ class PmergeMe {
 			for (int i = 1; i < argc; i++) {
 				if (ft_check(str[i])) {
 
-					if (std::find(this->i_cont.begin(), this->i_cont.end(), atoi(str[i])) == this->i_cont.end())
+					// if (std::find(this->i_cont.begin(), this->i_cont.end(), atoi(str[i])) == this->i_cont.end())
 						this->i_cont.push_back(atoi(str[i]));
-					else
-						std::cout << "This data '" << str[i] << "' is duplicated. I delete it!!!" << std::endl;
+					// else
+					// 	std::cout << "This data '" << str[i] << "' is duplicated. I delete it!!!" << std::endl;
 				}
 				else
 					exit (-1);
@@ -73,7 +73,7 @@ class PmergeMe {
 			std::string			aux;
 			std::stringstream	ss;
 
-			for (typename container::iterator it = this->i_cont.begin(); it != this->i_cont.end(); it++) {
+			for (iter it = this->i_cont.begin(); it != this->i_cont.end(); it++) {
 				ss << *it;
 				ss << " ";
 			}
@@ -103,24 +103,24 @@ class PmergeMe {
 					std::set<int>::iterator it2 = aux2.begin();
 					if (*it1 < *it2) {
 						i_cont.push_back(*it1);
-					std::cout << *it1 << std::endl;
 						aux1.erase(it1);
 					}
 					else {
 						i_cont.push_back(*it2);
-					std::cout << *it2<< std::endl;
 						aux2.erase(it2);
 					}
 				}
 				else {
 					i_cont.push_back(*it1);
-					std::cout << *it1 << std::endl;
 					aux1.erase(it1);
 				}
 			}
+			while (!aux2.empty()) {
+				std::set<int>::iterator it2 = aux2.begin();
+				i_cont.push_back(*it2);
+				aux2.erase(it2);
+			}
 
-			for (iter it = this->i_cont.begin(); it != this->i_cont.end(); it++)
-				std::cout << *it << std::endl;
 			return;
 		}
 };
