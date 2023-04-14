@@ -27,6 +27,7 @@ RPN::RPN(const RPN &obj) {
 
 RPN::~RPN() {
 
+
 	return;
 }
 
@@ -39,51 +40,17 @@ RPN &RPN::operator=(const RPN &obj) {
 //class functions
 void	RPN::ft_print() {
 
-	std::stack<int>		aux(this->list);
+	std::stack<float>		aux(this->list);
 	
-	while (!aux.empty()) {
+	if (aux.size() != 1)
+		std::cout << "Error: Something smells rotten in Denmark" << std::endl;
+	else {
+		while (!aux.empty()) {
 
-		std::cout << aux.top() << std::endl;
-		aux.pop();
-	}
-
-	return;
-}
-
-std::stack<int>  RPN::ft_create(char *str) {
-
-	std::stack<int>		res;
-	std::string			aux = str;
-	std::stringstream	stream(aux);
-	int					sol;
-	
-	while (getline(stream, aux, ' ')) {
-		if (aux.size() > 0) { //con esto evito los espacios que me dan size 0
-			if ((aux[0] >= '0' && aux[0] <= '9') || (aux[0] == '-' && aux.size() == 2)) {
-				res.push(std::atoi(aux.c_str()));
-			}
-			else {
-				if (res.size() != 2) {
-					std::cout << "Error: Needed only 2 numbers in the stack for the operation" << std::endl;
-					while (!res.empty())
-						res.pop();
-					return res;
-				}
-				sol = res.top();
-				ft_operate(aux[0]);
-				res.push(sol);
-			}
+			std::cout << aux.top() << std::endl;
+			aux.pop();
 		}
 	}
-
-	return res;
-}
-
-int	RPN::ft_operate(char aux) {
-
-	
-
-
 	return;
 }
 
@@ -111,4 +78,58 @@ bool    ft_check(char *str) {
 		}
 	}
 	return true;
+}
+
+std::stack<float>  ft_create(char *str) {
+
+	std::stack<float>	res;
+	std::string			aux = str;
+	std::stringstream	stream(aux);
+	float				sol1;
+	float				sol2;
+	
+	while (getline(stream, aux, ' ')) {
+		if (aux.size() > 0) { //con esto evito los espacios que me dan size 0
+			if ((aux[0] >= '0' && aux[0] <= '9') || (aux[0] == '-' && aux.size() == 2)) {
+				res.push(std::atoi(aux.c_str()));
+			}
+			else {
+				if (res.size() < 2) {
+					std::cout << "Error: Needed at least 2 numbers in the stack for the operation" << std::endl;
+					while (!res.empty())
+						res.pop();
+					return res;
+				}
+				sol1 = res.top();
+				res.pop();
+				sol2 = res.top();
+				res.pop();
+				sol1 = ft_operate(aux[0], sol2, sol1);
+				res.push(sol1);
+			}
+		}
+	}
+
+	return res;
+}
+
+float	ft_operate(char aux, float sol2, float sol1) {
+
+	if (aux == '+')
+		return (sol2 + sol1);
+	else if (aux == '-')
+		return (sol2 - sol1);
+	else if (aux == '*')
+		return (sol2 * sol1);
+	else if (aux == '/') {
+		if (sol1 != 0) {
+			return (sol2 / sol1);
+		}
+		else {
+			std::cout << "Error: Impossible to divide by zero" << std::endl;
+			exit (-1);
+		}
+	}
+
+	return 0;
 }
