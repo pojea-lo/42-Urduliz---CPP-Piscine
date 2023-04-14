@@ -9,10 +9,10 @@ int     main(int argc, char **argv) {
 	}
 	else {
 
-		PmergeMe    init(argc, argv);
+		PmergeMe<std::vector<int> >		init(argc, argv);
 
 		std::cout << "Before: " << init << std::endl;
-		init.orden(init.getVector());
+		init.orden();
 		std::cout << "After: " << init << std::endl;
 	}
 
