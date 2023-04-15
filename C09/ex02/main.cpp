@@ -17,8 +17,8 @@ int     main(int argc, char **argv) {
 		init_d.orden();
 		std::cout << "After:  " << init_v << std::endl;
 
-		std::cout << "Time to process a range of " << argc - 1 << " elements with std::vactor<int> : " << init_v.getDiff() << std::endl;
-		std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque<int>  : " << init_d.getDiff() << std::endl;
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::vactor<int> : " << init_v.getDiff() << " us" << std::endl;
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque<int>  : " << init_d.getDiff() << " us" << std::endl;
 	}
 
 	return 0;
