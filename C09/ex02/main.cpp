@@ -9,11 +9,16 @@ int     main(int argc, char **argv) {
 	}
 	else {
 
-		PmergeMe    init(argc, argv);
+		PmergeMe<std::vector<int> >		init_v(argc, argv);
+		PmergeMe<std::deque<int> >		init_d(argc, argv);
 
-		std::cout << "Before: " << init << std::endl;
-		init.orden(init.getVector());
-		std::cout << "After: " << init << std::endl;
+		std::cout << "Before: " << init_v << std::endl;
+		init_v.orden();
+		init_d.orden();
+		std::cout << "After:  " << init_v << std::endl;
+
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::vactor<int> : " << init_v.getDiff() << std::endl;
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque<int>  : " << init_d.getDiff() << std::endl;
 	}
 
 	return 0;
