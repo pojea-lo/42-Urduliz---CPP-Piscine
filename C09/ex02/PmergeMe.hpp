@@ -8,6 +8,7 @@
 #include <cctype>
 #include <string>
 #include <sstream>
+#include <sys/time.h>
 
 const size_t		limit_sort_treshold = 5;
 
@@ -60,6 +61,10 @@ class PmergeMe {
 			if (obj.i_cont.size() != 0) {
 				this->i_cont = obj.i_cont;
 			}
+			else
+				this->i_cont();
+			
+			this->diff = obj.diff; 
 
 			this->sort_treshold = obj.sort_treshold;
 
@@ -69,6 +74,11 @@ class PmergeMe {
 		container		getI_cont() {
 
 			return i_cont;
+		}
+
+		double			getDiff() {
+
+			return (diff * 1e6);
 		}
 
 		std::string		getString() {
@@ -92,6 +102,7 @@ class PmergeMe {
 					
 			else
 				std::cout << "Divido con merge" << std::endl;
+
 
 			return;
 		}
