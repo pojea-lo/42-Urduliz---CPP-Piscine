@@ -3,11 +3,13 @@
 
 #include <iostream>
 #include <vector>
-#include <set>
+#include <deque>
 #include <cstdlib>
 #include <cctype>
 #include <string>
 #include <sstream>
+
+const size_t		limit_sort_treshold = 5;
 
 bool    		ft_check(char *str);
 
@@ -15,13 +17,14 @@ template <typename container>
 class PmergeMe {
 
 	private:
-		container    i_cont;
+		container	i_cont;
+		size_t		sort_treshold;
 
 	public:
 
 		typedef typename container::iterator	iter;
 
-		PmergeMe() : i_cont() {
+		PmergeMe() : i_cont() , sort_treshold(limit_sort_treshold) {
 
 			return;
 		}
@@ -29,16 +32,14 @@ class PmergeMe {
 		PmergeMe(int argc, char **str) {
 
 			for (int i = 1; i < argc; i++) {
-				if (ft_check(str[i])) {
+				if (ft_check(str[i]))
+					this->i_cont.push_back(atoi(str[i]));
 
-					// if (std::find(this->i_cont.begin(), this->i_cont.end(), atoi(str[i])) == this->i_cont.end())
-						this->i_cont.push_back(atoi(str[i]));
-					// else
-					// 	std::cout << "This data '" << str[i] << "' is duplicated. I delete it!!!" << std::endl;
-				}
 				else
 					exit (-1);
 			}
+
+			this->sort_treshold = limit_sort_treshold;
 
 			return;
 		}
@@ -59,6 +60,8 @@ class PmergeMe {
 			if (obj.i_cont.size() != 0) {
 				this->i_cont = obj.i_cont;
 			}
+
+			this->sort_treshold = obj.sort_treshold;
 
 			return *this;
 		}
@@ -84,52 +87,39 @@ class PmergeMe {
 
 		void		orden() {
 
-			std::set<int>	aux1;
-			std::set<int>	aux2;
-
-			for (size_t i = 0; i < (i_cont.size() / 2); i++)
-				aux1.insert(i_cont[i]);
-			for (size_t i = (i_cont.size() / 2); i < i_cont.size(); i++)
-				aux2.insert(i_cont[i]);
-
-			while (!i_cont.empty())
-				i_cont.pop_back();
-
-			while (!aux1.empty()) {
-
-				std::set<int>::iterator it1 = aux1.begin();
-				if (!aux2.empty()) {
-
-					std::set<int>::iterator it2 = aux2.begin();
-					if (*it1 < *it2) {
-						i_cont.push_back(*it1);
-						aux1.erase(it1);
-					}
-					else {
-						i_cont.push_back(*it2);
-						aux2.erase(it2);
-					}
-				}
-				else {
-					i_cont.push_back(*it1);
-					aux1.erase(it1);
-				}
-			}
-			while (!aux2.empty()) {
-				std::set<int>::iterator it2 = aux2.begin();
-				i_cont.push_back(*it2);
-				aux2.erase(it2);
-			}
+			if (this->i_cont.size() <= this->sort_treshold)
+				make_insert();				
+					
+			else
+				std::cout << "Divido con merge" << std::endl;
 
 			return;
+		}
+
+		void		make_insert() {
+			
+			int		aux;
+			size_t	i = 0;
+
+			while (i < this->i_cont.size()- 1) {
+
+				if (this->i_cont[i] > this->i_cont[i + 1]) {
+					aux = this->i_cont[i];
+					this->i_cont[i] = this->i_cont[i + 1];
+					this->i_cont[i + 1] = aux;
+					i = 0;
+				}
+				else
+					i++;
+			}
 		}
 };
 
 template <typename container>
 std::ostream	&operator<<(std::ostream &os, PmergeMe<container> &obj) {
 
-    os << obj.getString();
-    return os;
+	os << obj.getString();
+	return os;
 }
 
 #endif

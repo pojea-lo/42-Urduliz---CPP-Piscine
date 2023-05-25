@@ -10,6 +10,7 @@ int     main(int argc, char **argv) {
 	else {
 
 		PmergeMe<std::vector<int> >		init(argc, argv);
+		// PmergeMe<std::deque<int> >		init(argc, argv);
 
 		std::cout << "Before: " << init << std::endl;
 		init.orden();
