@@ -19,13 +19,12 @@ class PmergeMe {
 
 	private:
 		container	i_cont;
-		size_t		sort_treshold;
 
 	public:
 
 		typedef typename container::iterator	iter;
 
-		PmergeMe() : i_cont() , sort_treshold(limit_sort_treshold) {
+		PmergeMe() : i_cont() {
 
 			return;
 		}
@@ -39,8 +38,6 @@ class PmergeMe {
 				else
 					exit (-1);
 			}
-
-			this->sort_treshold = limit_sort_treshold;
 
 			return;
 		}
@@ -64,21 +61,12 @@ class PmergeMe {
 			else
 				this->i_cont();
 			
-			this->diff = obj.diff; 
-
-			this->sort_treshold = obj.sort_treshold;
-
 			return *this;
 		}
 
 		container		getI_cont() {
 
 			return i_cont;
-		}
-
-		double			getDiff() {
-
-			return (diff * 1e6);
 		}
 
 		std::string		getString() {
@@ -97,32 +85,93 @@ class PmergeMe {
 
 		void		orden() {
 
-			if (this->i_cont.size() <= this->sort_treshold)
-				make_insert();				
+			if (this->i_cont.size() <= limit_sort_treshold)
+				this->i_cont = make_insert(this->i_cont);				
 					
 			else
-				std::cout << "Divido con merge" << std::endl;
-
+				make_merge();
 
 			return;
 		}
 
-		void		make_insert() {
+		container		make_insert(container vector) {
 			
+			iter 	it = vector.begin();
 			int		aux;
-			size_t	i = 0;
+			
+			while (it != vector.end() - 1) {
 
-			while (i < this->i_cont.size()- 1) {
-
-				if (this->i_cont[i] > this->i_cont[i + 1]) {
-					aux = this->i_cont[i];
-					this->i_cont[i] = this->i_cont[i + 1];
-					this->i_cont[i + 1] = aux;
-					i = 0;
+				if (*(it + 1) < *it) {
+					aux = *(it + 1);
+					vector.erase(it + 1);
+					vector.insert(it, aux);
+					it = vector.begin();
 				}
 				else
-					i++;
+					it++;
 			}
+
+			return vector;
+		}
+
+		void		make_merge() {
+
+//calculo el numero de subgrupos en los que divido la lista
+			int		merge_size;
+			
+			if (i_cont.size() % limit_sort_treshold == 0)
+				merge_size = i_cont.size() / limit_sort_treshold;
+			else
+				merge_size = (i_cont.size() / limit_sort_treshold) + 1;
+
+//leno los subgrupos de numeros del array
+			container	cont_aux[merge_size];
+			size_t		i = 0;
+			size_t		j = 0;
+
+			for (iter it = this->i_cont.begin(); it != this->i_cont.end(); it++) {
+
+				cont_aux[i].push_back(*it);
+				j++;
+				
+				if (j == limit_sort_treshold) {
+					i++;
+					j = 0;
+				}
+			}
+
+//ordeno todos los subgrupos
+			for (int i = 0; i != merge_size; i++)
+				cont_aux[i] = make_insert(cont_aux[i]);
+
+//mezclo los subgrupos quedandome ya en el 0 la lista ordenada
+			i = 0;
+			while (cont_aux[1].size() != 0) {
+
+				cont_aux[i] == ft_combine(cont_aux[i], cont_aux[i + 1]);
+
+			}			
+
+		}
+
+		container	ft_combine(container list_1, container list_2) {
+
+			size_t		i = 0;
+			// std::cout << "Lista 1: " << list_1 << std::endl; 
+			// std::cout << "Lista 2: " << list_2 << std::endl; 
+			for (iter it = list_2.begin(); it != list_2.end(); it++) {
+
+				while (list_1[i] < *it && list_2.size() != 0)
+					i++;
+				if (i != list_1.size()) {
+					list_1.insert(list_1.begin() + i, *it);
+					list_2.erase(list_2.begin());
+				}
+
+
+			}
+
+			return list_1;
 		}
 };
 
