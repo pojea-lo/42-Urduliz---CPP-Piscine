@@ -94,6 +94,7 @@ class PmergeMe {
 			return;
 		}
 
+//funcion que realiza el algoritmo de ordenacion insert
 		container		make_insert(container vector) {
 			
 			iter 	it = vector.begin();
@@ -114,9 +115,10 @@ class PmergeMe {
 			return vector;
 		}
 
+//función que realiza el algoritmo de merge
 		void		make_merge() {
 
-//calculo el numero de subgrupos en los que divido la lista
+//calculo el numero de subgrupos en los que divido la lista en funcion del limite que tenga definido al inicio
 			int		merge_size;
 			
 			if (i_cont.size() % limit_sort_treshold == 0)
@@ -144,35 +146,39 @@ class PmergeMe {
 			for (int i = 0; i != merge_size; i++)
 				cont_aux[i] = make_insert(cont_aux[i]);
 
-//mezclo los subgrupos quedandome ya en el 0 la lista ordenada
-			i = 0;
-			while (cont_aux[1].size() != 0) {
+//mezclo los subgrupos quedandome ya en el grupo 0 la lista ordenada
+//			while (cont_aux[1].size() != 0) {
 
-				cont_aux[i] == ft_combine(cont_aux[i], cont_aux[i + 1]);
-
-			}			
+				i = 0;
+				cont_aux[i] = ft_combine(cont_aux[i], cont_aux[i + 1]);
+				
+//			}			
 
 		}
 
 		container	ft_combine(container list_1, container list_2) {
 
-			size_t		i = 0;
-			// std::cout << "Lista 1: " << list_1 << std::endl; 
-			// std::cout << "Lista 2: " << list_2 << std::endl; 
-			for (iter it = list_2.begin(); it != list_2.end(); it++) {
+			size_t		i;
+			iter		it_2 = list_2.begin();
 
-				while (list_1[i] < *it && list_2.size() != 0)
+			while (list_2.size() != 0) {
+
+				it_2 = list_2.begin();
+				i = 0;
+
+				while (i < list_1.size() && list_1[i] < *it_2) 
 					i++;
+
 				if (i != list_1.size()) {
-					list_1.insert(list_1.begin() + i, *it);
+					list_1.insert(list_1.begin() + i, *it_2);
 					list_2.erase(list_2.begin());
 				}
-
-
 			}
 
 			return list_1;
 		}
+
+
 };
 
 template <typename container>
