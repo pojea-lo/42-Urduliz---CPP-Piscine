@@ -8,7 +8,7 @@
 #include <cctype>
 #include <string>
 #include <sstream>
-#include <sys/time.h>
+#include <ctime>
 
 const size_t		limit_sort_treshold = 5;
 
@@ -19,6 +19,7 @@ class PmergeMe {
 
 	private:
 		container	i_cont;
+		clock_t		t0, t1;
 
 	public:
 
@@ -83,7 +84,19 @@ class PmergeMe {
 			return aux;
 		}
 
+		double		getTime() {
+
+			double	time;
+
+			time = (double(this->t1 - this->t0) / CLOCKS_PER_SEC);
+			return time;
+		}
+
+//funcion que ordena y aplica el algoritmo merge insert sort
 		void		orden() {
+
+//tomo el inicio del tiempo
+			this->t0 = clock();
 
 			if (this->i_cont.size() <= limit_sort_treshold)
 				this->i_cont = make_insert(this->i_cont);				
@@ -91,7 +104,16 @@ class PmergeMe {
 			else
 				make_merge();
 
+//tomo el final del tiempo
+			this->t1 = clock();
+
 			return;
+		}
+
+//funcion que devuelve el tamaño de la lista
+		int			getSize() {
+
+			return this->i_cont.size();
 		}
 
 //funcion que realiza el algoritmo de ordenacion insert
@@ -119,14 +141,14 @@ class PmergeMe {
 		void		make_merge() {
 
 //calculo el numero de subgrupos en los que divido la lista en funcion del limite que tenga definido al inicio
-			int		merge_size;
+			size_t		merge_size;
 			
 			if (i_cont.size() % limit_sort_treshold == 0)
 				merge_size = i_cont.size() / limit_sort_treshold;
 			else
 				merge_size = (i_cont.size() / limit_sort_treshold) + 1;
 
-//leno los subgrupos de numeros del array
+//lleno los subgrupos de numeros del array
 			container	cont_aux[merge_size];
 			size_t		i = 0;
 			size_t		j = 0;
@@ -143,17 +165,33 @@ class PmergeMe {
 			}
 
 //ordeno todos los subgrupos
-			for (int i = 0; i != merge_size; i++)
+			for (size_t i = 0; i != merge_size; i++)
 				cont_aux[i] = make_insert(cont_aux[i]);
 
 //mezclo los subgrupos quedandome ya en el grupo 0 la lista ordenada
-//			while (cont_aux[1].size() != 0) {
+			while (cont_aux[0].size() != this->i_cont.size()) {
 
 				i = 0;
-				cont_aux[i] = ft_combine(cont_aux[i], cont_aux[i + 1]);
 				
-//			}			
+				while (i < merge_size) {
+					
+					if (i + 1 != merge_size || merge_size == 1) {
+						cont_aux[i / 2] = ft_combine(cont_aux[i], cont_aux[i + 1]);
+						cont_aux[i + 1].clear();
+					}
+					else {
+						cont_aux[i / 2] = cont_aux[i];
+						cont_aux[i].clear();
+					}
+					i += 2;
+				}	
 
+				if (merge_size % 2 == 0)
+					merge_size = merge_size / 2;
+				else
+					merge_size = (merge_size / 2) + 1;
+			}
+			this->i_cont = cont_aux[0];			
 		}
 
 		container	ft_combine(container list_1, container list_2) {
@@ -166,11 +204,16 @@ class PmergeMe {
 				it_2 = list_2.begin();
 				i = 0;
 
+				// std::cout << list_2.size() << std::endl;
 				while (i < list_1.size() && list_1[i] < *it_2) 
 					i++;
 
 				if (i != list_1.size()) {
 					list_1.insert(list_1.begin() + i, *it_2);
+					list_2.erase(list_2.begin());
+				}
+				else {
+					list_1.push_back(*it_2);
 					list_2.erase(list_2.begin());
 				}
 			}
