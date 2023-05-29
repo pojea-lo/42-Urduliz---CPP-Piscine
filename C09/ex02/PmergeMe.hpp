@@ -124,10 +124,10 @@ class PmergeMe {
 			
 			while (it != vector.end() - 1) {
 
-				if (*(it + 1) < *it) {
+				if (*it > *(it + 1)) {
 					aux = *(it + 1);
-					vector.erase(it + 1);
-					vector.insert(it, aux);
+					*(it + 1) = *it;
+					*it = aux;
 					it = vector.begin();
 				}
 				else
@@ -219,6 +219,19 @@ class PmergeMe {
 			}
 
 			return list_1;
+		}
+
+//funcion que chequea si la lista esta o no ordenada
+		int		ft_sort_check() {
+
+			for (iter it = this->i_cont.begin(); it != this->i_cont.end() - 1; it++) {
+				if (*it > *(it + 1)) {
+					std::cout << "Falla en: " << *it << std::endl;
+					return (-1);
+				}
+			}
+
+			return (0);
 		}
 
 
