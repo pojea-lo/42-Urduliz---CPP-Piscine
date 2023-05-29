@@ -8,7 +8,7 @@ bool    ft_check (char *str) {
 
 	aux = str;
 	for (size_t j = 0; j < aux.size(); j++) {
-		if (!isdigit(str[j])) {
+		if (!isdigit(str[j]) || str[j] == '\'' || str[j] == '\"') {
 			std::cout << "Error: '" << aux << "' Bad argument!!!" << std::endl;
 			return false;
 		}
