@@ -67,8 +67,6 @@ void	BitcoinExchange::print_input() {
 
 double	BitcoinExchange::change(std::string str1, std::string str2) {
 
-	double	ret;
-
 	str1.replace(4, 1, "");
 	str1.replace(6, 1, "");
 	std::map<int, float>::iterator	itlow = this->database.lower_bound(std::atoi(str1.c_str()));
