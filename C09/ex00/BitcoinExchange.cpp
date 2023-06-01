@@ -37,6 +37,7 @@ BitcoinExchange		&BitcoinExchange::operator=(const BitcoinExchange &obj) {
 }
 
 //functions
+//Función que me imprime la base de datos junto con su tamaño
 void	BitcoinExchange::print_db() {
 
 	std::cout << "The database for the change is: " << std::endl;
@@ -47,6 +48,7 @@ void	BitcoinExchange::print_db() {
 	return;
 }
 
+//Función que me imprime el archivo ya con la resolución del valor del bitcoin al cambio (usando la funcion change)
 void	BitcoinExchange::print_input() {
 
 	std::cout << "The input is: " << std::endl;
@@ -65,15 +67,26 @@ void	BitcoinExchange::print_input() {
 	return;
 }
 
+//Función que busca cada posicion del archivo en la base de datos, y retorna el valor 
 double	BitcoinExchange::change(std::string str1, std::string str2) {
 
 	str1.replace(4, 1, "");
 	str1.replace(6, 1, "");
 	std::map<int, float>::iterator	itlow = this->database.lower_bound(std::atoi(str1.c_str()));
-	return (std::atof(str2.c_str()) * itlow->second);
+	std::map<int, float>::iterator	itgood;
+
+//he de eliminar un espacio al final del str1 para compararlo con la fecha de la base de datos, pues si es la misma, me he de quedar con el low y si no coger el anterior
+	str1.erase(std::remove_if(str1.begin(), str1.end(), ::isspace), str1.end());
+	if (str1.compare(std::to_string(itlow->first)) != 0)
+		itgood = std::prev(itlow);
+	else
+		itgood = itlow;
+
+	return (std::atof(str2.c_str()) * itgood->second);
 }
 
 //external functions
+//a partir del archivo de la base de datos creo el mapa
 std::map<int, float>	ft_createdb() {
 
 	std::map<int, float>	ret;
@@ -98,6 +111,7 @@ std::map<int, float>	ft_createdb() {
 	return (ret);
 }
 
+//a partir del archivo de entrada creo el multimap
 std::multimap<std::string, std::string> ft_createinput(char *str) {
 
 	std::multimap<std::string, std::string>	ret;
@@ -132,6 +146,7 @@ std::multimap<std::string, std::string> ft_createinput(char *str) {
 	return (ret);
 }
 
+//chequeo el segundo argumento del map y multimap
 bool	ft_checkSecond(std::string *str) {
 
 	int		i = 0;
@@ -152,6 +167,7 @@ bool	ft_checkSecond(std::string *str) {
 	return true;
 }
 
+//chequeo el primer argumento de la fecha
 bool	ft_checkFirst(std::string *str) {
 
 	std::string		aux;
@@ -184,6 +200,7 @@ bool	ft_checkFirst(std::string *str) {
 	return (true);
 }
 
+//funcion que chequea si es digito para poder hacer el atoi
 bool	ft_isdigit(std::string str) {
 	
 	for (size_t i = 0; i < str.size(); i++) {
